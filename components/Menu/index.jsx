@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { BsGrid, BsArrowUp, BsPerson, BsPlusLg, BsArrowRightSquare } from "react-icons/bs";
+import { BsGrid, BsArrowUp, BsPerson, BsPlusLg, BsBoxArrowRight } from "react-icons/bs";
 
 export default function Menu() {
   const router = useRouter();
@@ -44,7 +44,7 @@ export default function Menu() {
       </div>
       <div className="row menu__option">
         <div className="col-2 menu__icon">
-          <BsArrowRightSquare />
+          <BsBoxArrowRight />
         </div>
         <div className="col-8 menu__text">
           <button className="menu__button">Log Out</button>
