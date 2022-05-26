@@ -1,0 +1,110 @@
+/* Styling for Navbar Component */
+.navbar__main {
+  padding-top: 40px;
+  height: 140px;
+  background: #ffffff;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+}
+.navbar__tittle {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 29px;
+  line-height: 40px;
+  color: #6379f4;
+}
+.navbar__name {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 31px;
+}
+.navbar__number {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 24px;
+  color: rgba(58, 61, 66, 0.9);
+}
+.navbar__bell {
+  margin-left: -30px;
+}
+/* Styling for Footer Component */
+.footer__main {
+  padding-top: 20px;
+  height: 70px;
+  background: #6379f4;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+}
+.footer__sign {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
+  color: rgba(239, 239, 239, 0.9);
+}
+.footer__content {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 28px;
+  color: #efefef;
+}
+/* Styling for Menu Component */
+.menu__main {
+  margin-top: 40px;
+  padding-top: 50px;
+  background: #ffffff;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 25px;
+  width: 250px;
+  height: 650px;
+}
+.menu__option {
+  width: 100%;
+  margin-bottom: 50px;
+}
+.menu__option {
+  width: 100%;
+  margin-bottom: 50px;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 31px;
+  color: rgba(58, 61, 66, 0.8);
+}
+.menu__optionActive {
+  width: 100%;
+  margin-bottom: 50px;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 31px;
+  color: #6379f4;
+}
+.menu__spaceLogout {
+  margin-bottom: 200px;
+}
+.menu__icon {
+  margin-left: 20px;
+}
+.menu__iconActive {
+  border-left: 3px solid #6379f4;
+  margin-left: 20px;
+}
+.menu__button {
+  color: rgba(58, 61, 66, 0.8);
+  border: none;
+  background: none;
+}
+.menu__buttonActive {
+  color: #6379f4;
+  border: none;
+  background: none;
+}

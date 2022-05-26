@@ -1,0 +1,460 @@
+/* Styling for Home Page */
+.home__main {
+  height: 750px;
+}
+.home__balance {
+  padding-top: 10px;
+  padding-left: 30px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  height: 150px;
+  background: #6379f4;
+  border-radius: 20px;
+}
+.home__balanceTittle {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: #e0e0e0;
+}
+.home__balanceNominal {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 55px;
+  color: #ffffff;
+}
+.home__balancePhone {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  color: #dfdcdc;
+}
+.home__balanceButton {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+  color: #ffffff;
+}
+.home__balanceButtonSet {
+  margin-bottom: 20px;
+  width: 60%;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  color: #ffffff;
+}
+.home__dashboard {
+  width: 900px;
+  padding-left: 15px;
+}
+.home__chart {
+  width: 100%;
+  margin-right: 20px;
+  height: 450px;
+  background: #ffffff;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 25px;
+}
+.home__transaction {
+  width: 100%;
+  padding-top: 30px;
+  height: 450px;
+  background: #ffffff;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 25px;
+}
+.home__transactionTittle {
+  margin-left: 10px;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+  color: #3a3d42;
+}
+.home__seeAllButton {
+  border: none;
+  background: none;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  color: #6379f4;
+}
+/* Styling for History Page */
+.history__main {
+  height: 750px;
+}
+.history__content {
+  padding-top: 50px;
+  padding-left: 50px;
+  margin-top: 40px;
+  height: 650px;
+  background: #ffffff;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 25px;
+}
+.history__transactionTittle {
+  margin-left: 10px;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+  color: #3a3d42;
+}
+.history__filter {
+  text-align: center;
+  width: 200px;
+  height: 40px;
+  background: rgba(58, 61, 66, 0.1);
+  border-radius: 20px;
+  border: none;
+}
+/* Styling for Transfer Page */
+.transfer__main {
+  height: 750px;
+}
+.transfer__contentHide {
+  display: none;
+}
+.transfer__content {
+  padding-top: 50px;
+  padding-left: 50px;
+  margin-top: 40px;
+  height: 650px;
+  background: #ffffff;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 25px;
+}
+.transfer__transactionTittle {
+  margin-left: 10px;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+  color: #3a3d42;
+}
+.transfer__search {
+  padding-top: 10px;
+  text-align: center;
+  width: 90%;
+  height: 50px;
+  background: rgba(58, 61, 66, 0.1);
+  border-radius: 20px;
+  border: none;
+}
+.transfer__searchInput {
+  width: 100%;
+  border: none;
+  background: none;
+}
+.transfer__receiverCard {
+  height: 100px;
+  padding: 20px;
+  width: 90%;
+  margin-top: 20px;
+  background: #ffffff;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+.transfer__nameCard {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+  color: #4d4b57;
+}
+.transfer__numberCard {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #7a7886;
+}
+.transfer__information {
+  margin-top: 30px;
+  width: 40%;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
+  color: #7a7886;
+}
+.transfer__nominal {
+  width: 30%;
+  border: none;
+  margin-top: 30px;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 42px;
+  line-height: 56px;
+  margin-left: 32%;
+  color: #b5bdcc;
+  text-align: center;
+}
+.transfer__saldo {
+  text-align: center;
+  margin-top: 20px;
+  margin-left: -8%;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  color: #3a3d42;
+}
+.transfer__note {
+  margin-top: 40px;
+  margin-left: 15%;
+  text-align: center;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+  width: 60%;
+  color: rgba(169, 169, 169, 0.8);
+  border-bottom: 2px solid rgba(169, 169, 169, 0.8);
+}
+.transfer__noteInput {
+  border: none;
+  background: none;
+  width: 100%;
+}
+.transfer__button {
+  margin-top: 30px;
+  border: none;
+  width: 200px;
+  height: 50px;
+  background: #6379f4;
+  box-shadow: 0px 6px 75px rgba(100, 87, 87, 0.05);
+  border-radius: 12px;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+  text-align: center;
+  color: #ffffff;
+}
+/* Styling for Confirmation Page */
+.confirmation__main {
+  height: 750px;
+}
+.confirmation__content {
+  padding-top: 10px;
+  padding-left: 50px;
+  margin-top: 40px;
+  height: 650px;
+  background: #ffffff;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 25px;
+}
+.confirmation__transactionTittle {
+  margin-left: -20px;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+  color: #3a3d42;
+}
+.confirmation__receiverCard {
+  height: 100px;
+  padding: 20px;
+  width: 90%;
+  margin-top: 20px;
+  background: #ffffff;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+.confirmation__nameCard {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+  color: #4d4b57;
+}
+.confirmation__numberCard {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #7a7886;
+}
+.confirmation__detailCard {
+  height: 70px;
+  padding: 10px;
+  width: 90%;
+  margin-top: 20px;
+  background: #ffffff;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+.confirmation__tittleDetail {
+  margin-left: -20px;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  color: #7a7886;
+}
+.confirmation__valueDetail {
+  margin-top: -10px;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 17px;
+  color: #514f5b;
+}
+.confirmation__button {
+  margin-top: 30px;
+  border: none;
+  width: 200px;
+  height: 50px;
+  background: #6379f4;
+  box-shadow: 0px 6px 75px rgba(100, 87, 87, 0.05);
+  border-radius: 12px;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+  text-align: center;
+  color: #ffffff;
+}
+/* Styling for Status Page */
+.status__main {
+  height: 950px;
+}
+.status__content {
+  padding-top: 10px;
+  padding-left: 50px;
+  margin-top: 40px;
+  height: 850px;
+  background: #ffffff;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 25px;
+}
+.status__transaction {
+  margin-top: 20px;
+  align-items: center;
+  text-align: center;
+}
+.status__msg {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
+  text-align: center;
+  color: #7a7886;
+}
+.status__transactionTittle {
+  margin-left: -20px;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+  color: #3a3d42;
+}
+.status__receiverCard {
+  height: 100px;
+  padding: 20px;
+  width: 90%;
+  margin-top: 20px;
+  background: #ffffff;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+.status__nameCard {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+  color: #4d4b57;
+}
+.status__numberCard {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #7a7886;
+}
+.status__detailCard {
+  height: 70px;
+  padding: 10px;
+  width: 90%;
+  margin-top: 20px;
+  background: #ffffff;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+.status__tittleDetail {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  color: #7a7886;
+}
+.status__valueDetail {
+  margin-top: -10px;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 17px;
+  color: #514f5b;
+}
+.status__button {
+  margin-top: 30px;
+  border: none;
+  width: 200px;
+  height: 50px;
+  background: #6379f4;
+  box-shadow: 0px 6px 75px rgba(100, 87, 87, 0.05);
+  border-radius: 12px;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+  text-align: center;
+  color: #ffffff;
+}
+.status__downloadButton {
+  margin-right: 30px;
+  margin-top: 30px;
+  border: none;
+  width: 200px;
+  height: 50px;
+  background: rgba(99, 121, 244, 0.15);
+  box-shadow: 0px 6px 75px rgba(100, 87, 87, 0.05);
+  border-radius: 12px;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+  text-align: center;
+  color: #6379f4;
+}
