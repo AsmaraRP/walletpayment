@@ -11,7 +11,7 @@ export default function Login() {
   };
   const handleLogin = (e) => {
     e.preventDefault();
-    router.push("/auth/createpin");
+    router.push("/main/home");
   };
   const handleForgot = (e) => {
     e.preventDefault();
@@ -40,25 +40,29 @@ export default function Login() {
             <h1 className="login__info">Start Accessing Banking Needs With All Devices and All Platforms With 30.000+ Users</h1>
             <h2 className="login__description">Transfering money is eassier than ever, you can access Zwallet wherever you are. Desktop, laptop, mobile phone? we cover all of that for you!</h2>
             <form className="login__formMenu">
-              <div className="row mt-5">
-                <div className="col-2 login__icon">
-                  <BsEnvelope />
-                </div>
-                <div className="col-8 login__form">
-                  <input type="email" placeholder="Enter your email" className="form-control login__formInput" />
+              <div className="login__setForm">
+                <div className="row mt-5">
+                  <div className="col-2 login__icon">
+                    <BsEnvelope />
+                  </div>
+                  <div className="col-8 login__form">
+                    <input type="email" placeholder="Enter your email" className="login__formInput" />
+                  </div>
                 </div>
               </div>
-              <div className="row mt-5">
-                <div className="col-2 login__icon">
-                  <BsLock />
-                </div>
-                <div className="col-7 login__form">
-                  <input type={!seePass ? "text" : "password"} placeholder="Enter your password" className="form-control login__formInput" />
-                </div>
-                <div className="col-1">
-                  <button className="login__changeType" onClick={handleChangePassword}>
-                    {seePass ? "see" : "hide"}
-                  </button>
+              <div className="login__setForm">
+                <div className="row mt-5">
+                  <div className="col-2 login__icon">
+                    <BsLock />
+                  </div>
+                  <div className="col-7 login__form">
+                    <input type={!seePass ? "text" : "password"} placeholder="Enter your password" className="login__formInput" />
+                  </div>
+                  <div className="col-1">
+                    <button className="login__changeType" onClick={handleChangePassword}>
+                      {seePass ? "see" : "hide"}
+                    </button>
+                  </div>
                 </div>
               </div>
               <div className="login__forgot">

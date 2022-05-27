@@ -3,14 +3,14 @@ import Footer from "../../../components/Footer";
 import Image from "next/image";
 import Menu from "../../../components/Menu";
 import Navbar from "../../../components/Navbar";
-import { BsSearch, BsPen } from "react-icons/bs";
+import { useRouter } from "next/router";
 
 export default function Confirmation() {
+  const router = useRouter();
   const [doTransfer, setDoTransfer] = useState(false);
-
   const handleTransfer = (e) => {
     e.preventDefault();
-    setDoTransfer(false);
+    router.push("/main/status");
   };
   return (
     <div>

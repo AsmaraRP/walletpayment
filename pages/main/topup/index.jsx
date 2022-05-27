@@ -1,9 +1,11 @@
 import React from "react";
+import Confirmpin from "../../../components/Confirmpin";
+import Topup from "../../../components/Topup";
 
-export default function Topup() {
+export default function Top() {
   return (
     <div>
-      <h1>Top up</h1>
+      <Topup />
     </div>
   );
 }

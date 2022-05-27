@@ -108,3 +108,152 @@
   border: none;
   background: none;
 }
+/* Styling for Top up Component */
+.topup__main {
+  padding-top: 10%;
+  padding-left: 40%;
+  background: rgba(0, 0, 0, 0.5);
+  height: 960px;
+  text-align: center;
+  align-items: center;
+}
+.topup__card {
+  padding: 30px;
+  width: 503px;
+  height: 417px;
+  background: #ffffff;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 25px;
+}
+.topup__tittle {
+  text-align: left;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+  color: #3a3d42;
+}
+.topup__des {
+  margin-top: 20px;
+  text-align: left;
+  width: 50%;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 30px;
+  color: rgba(58, 61, 66, 0.6);
+}
+.topup__input {
+  text-align: center;
+  margin-top: 50px;
+  width: 90%;
+  height: 40px;
+  background: #ffffff;
+  border: 1px solid rgba(169, 169, 169, 0.6);
+  box-shadow: 0px 10px 75px rgba(147, 147, 147, 0.1);
+  border-radius: 10px;
+}
+.topup__close {
+  border: none;
+  background: none;
+}
+.topup__button {
+  margin-top: 50px;
+  padding-right: 20px;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+  text-align: right;
+}
+.topup__submitButton {
+  width: 40%;
+  height: 50px;
+  border: none;
+  background: #6379f4;
+  box-shadow: 0px 6px 75px rgba(100, 87, 87, 0.05);
+  border-radius: 12px;
+  color: #ffffff;
+}
+/* Styling for Confrim Pin Component */
+.confirmpin__main {
+  padding-top: 10%;
+  padding-left: 40%;
+  background: rgba(0, 0, 0, 0.5);
+  height: 960px;
+  text-align: center;
+  align-items: center;
+}
+.confirmpin__card {
+  padding: 30px;
+  width: 503px;
+  height: 417px;
+  background: #ffffff;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 25px;
+}
+.confirmpin__tittle {
+  text-align: left;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+  color: #3a3d42;
+}
+.confirmpin__des {
+  margin-top: 20px;
+  text-align: left;
+  width: 70%;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 30px;
+  color: rgba(58, 61, 66, 0.6);
+}
+.confirmpin__setForm {
+  margin-top: 50px;
+}
+.confirmpin__formInput {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+  text-align: center;
+  color: rgba(169, 169, 169, 0.8);
+  width: 50px;
+  height: 60px;
+  border: 2px solid rgba(169, 169, 169, 0.8);
+  background: #ffffff;
+  border: 1px solid rgba(169, 169, 169, 0.6);
+  box-shadow: 0px 10px 75px rgba(147, 147, 147, 0.1);
+  border-radius: 10px;
+}
+.confirmpin__close {
+  border: none;
+  background: none;
+}
+.confirmpin__button {
+  margin-top: 50px;
+  padding-right: 20px;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+  text-align: right;
+}
+.confirmpin__submitButton {
+  width: 40%;
+  height: 50px;
+  border: none;
+  background: #6379f4;
+  box-shadow: 0px 6px 75px rgba(100, 87, 87, 0.05);
+  border-radius: 12px;
+  color: #ffffff;
+}

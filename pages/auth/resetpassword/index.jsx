@@ -42,12 +42,14 @@ export default function ResetPassword() {
             <h1 className="resetpass__info">Did You Forgot Your Password? Don’t Worry, You Can Reset Your Password In a Minutes.</h1>
             <h2 className="resetpass__description">To reset your password, you must type your e-mail and we will send a link to your email and you will be directed to the reset password screens.</h2>
             <form className="resetpass__formMenu">
-              <div className="row mt-5">
-                <div className="col-2 resetpass__icon">
-                  <BsEnvelope />
-                </div>
-                <div className="col-8 resetpass__form">
-                  <input type="email" placeholder="Enter your email" className="form-control resetpass__formInput" />
+              <div className="resetpass__setForm">
+                <div className="row mt-5">
+                  <div className="col-2 resetpass__icon">
+                    <BsEnvelope />
+                  </div>
+                  <div className="col-8 resetpass__form">
+                    <input type="email" placeholder="Enter your email" className="resetpass__formInput" />
+                  </div>
                 </div>
               </div>
               <div className="resetpass__button">
@@ -63,30 +65,34 @@ export default function ResetPassword() {
             <h2 className="resetpass__description">Now you can create a new password for your Zwallet account. Type your password twice so we can confirm your new passsword.</h2>
             <div className="resetpass__buttonhide">
               <form className="resetpass__formMenuHide">
-                <div className="row">
-                  <div className="col-2 resetpass__icon">
-                    <BsLock />
-                  </div>
-                  <div className="col-7 resetpass__form">
-                    <input type={!seePass ? "text" : "password"} placeholder="Create new password" className="form-control resetpass__formInput" />
-                  </div>
-                  <div className="col-1">
-                    <button className="resetpass__changeType" onClick={handleChangePassword}>
-                      {seePass ? "see" : "hide"}
-                    </button>
+                <div className="resetpass__setForm">
+                  <div className="row">
+                    <div className="col-2 resetpass__icon">
+                      <BsLock />
+                    </div>
+                    <div className="col-7 resetpass__form">
+                      <input type={!seePass ? "text" : "password"} placeholder="Create new password" className="resetpass__formInput" />
+                    </div>
+                    <div className="col-1">
+                      <button className="resetpass__changeType" onClick={handleChangePassword}>
+                        {seePass ? "see" : "hide"}
+                      </button>
+                    </div>
                   </div>
                 </div>
-                <div className="row mt-5">
-                  <div className="col-2 resetpass__icon">
-                    <BsLock />
-                  </div>
-                  <div className="col-7 resetpass__form">
-                    <input type={!seePassConfirm ? "text" : "password"} placeholder="Confirm new password" className="form-control resetpass__formInput" />
-                  </div>
-                  <div className="col-1">
-                    <button className="resetpass__changeType" onClick={handleChangePasswordConfirm}>
-                      {seePassConfirm ? "see" : "hide"}
-                    </button>
+                <div className="resetpass__setForm">
+                  <div className="row mt-5">
+                    <div className="col-2 resetpass__icon">
+                      <BsLock />
+                    </div>
+                    <div className="col-7 resetpass__form">
+                      <input type={!seePassConfirm ? "text" : "password"} placeholder="Confirm new password" className="resetpass__formInput" />
+                    </div>
+                    <div className="col-1">
+                      <button className="resetpass__changeType" onClick={handleChangePasswordConfirm}>
+                        {seePassConfirm ? "see" : "hide"}
+                      </button>
+                    </div>
                   </div>
                 </div>
                 <div className="resetpass__button">

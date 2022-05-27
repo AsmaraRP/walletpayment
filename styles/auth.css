@@ -82,9 +82,14 @@
   margin-top: 30px;
 }
 .signin__icon {
-  padding-top: 3px;
+  padding-bottom: 4px;
   margin-left: 30px;
   margin-right: -50px;
+}
+.signin__setForm {
+  margin-left: 5%;
+  width: 80%;
+  border-bottom: 1px solid #88888f;
 }
 .signin__formInput {
   font-family: "Nunito Sans";
@@ -166,6 +171,11 @@
   line-height: 33px;
   color: #3a3d42;
 }
+.login__setForm {
+  margin-left: 5%;
+  width: 80%;
+  border-bottom: 1px solid #88888f;
+}
 .login__description {
   margin-top: 20px;
   margin-left: 30px;
@@ -181,7 +191,7 @@
   margin-top: 30px;
 }
 .login__icon {
-  padding-top: 3px;
+  padding-bottom: 4px;
   margin-left: 30px;
   margin-right: -50px;
 }
@@ -384,11 +394,16 @@
   line-height: 30px;
   color: rgba(58, 61, 66, 0.6);
 }
+.resetpass__setForm {
+  margin-left: 5%;
+  width: 80%;
+  border-bottom: 1px solid #88888f;
+}
 .resetpass__formMenu {
   margin-top: 150px;
 }
 .resetpass__icon {
-  padding-top: 3px;
+  padding-bottom: 4px;
   margin-left: 30px;
   margin-right: -50px;
 }

@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import Footer from "../../../components/Footer";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import Menu from "../../../components/Menu";
 import Navbar from "../../../components/Navbar";
 import { BsSearch, BsPen } from "react-icons/bs";
 
 export default function Transfer() {
+  const router = useRouter();
   const [doTransfer, setDoTransfer] = useState(false);
   const handleCard = (e) => {
     e.preventDefault();
@@ -13,7 +15,7 @@ export default function Transfer() {
   };
   const handleTransfer = (e) => {
     e.preventDefault();
-    setDoTransfer(false);
+    router.push("/main/confirmation");
   };
   return (
     <div>

@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import Footer from "../../../components/Footer";
 import Menu from "../../../components/Menu";
 import Navbar from "../../../components/Navbar";
+import { useRouter } from "next/router";
 
 export default function Informastion() {
-  const [doTransfer, setDoTransfer] = useState(false);
-
-  const handleTransfer = (e) => {
+  const router = useRouter();
+  const handleManage = (e) => {
     e.preventDefault();
-    setDoTransfer(false);
+    router.push("/user/managenumber");
   };
   return (
     <div>
@@ -42,7 +42,7 @@ export default function Informastion() {
                       <p className="information__valueDetail">+62 813-9387-7946</p>
                     </div>
                     <div className="col-1">
-                      <button className="information__button" onClick={handleTransfer}>
+                      <button className="information__button" onClick={handleManage}>
                         Manage
                       </button>
                     </div>

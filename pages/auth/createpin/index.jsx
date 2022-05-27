@@ -33,22 +33,22 @@ export default function CreatePin() {
             <form className="createpin__formMenu">
               <div className="row">
                 <div className="col-2 createpin__form">
-                  <input type="text" placeholder="_" className="createpin__formInput" />
+                  <input type="text" placeholder="_" className="createpin__formInput" maxLength="1" />
                 </div>
                 <div className="col-2 createpin__form">
-                  <input type="text" placeholder="_" className="createpin__formInput" />
+                  <input type="text" placeholder="_" className="createpin__formInput" maxLength="1" />
                 </div>
                 <div className="col-2 createpin__form">
-                  <input type="text" placeholder="_" className="createpin__formInput" />
+                  <input type="text" placeholder="_" className="createpin__formInput" maxLength="1" />
                 </div>
                 <div className="col-2 createpin__form">
-                  <input type="text" placeholder="_" className="createpin__formInput" />
+                  <input type="text" placeholder="_" className="createpin__formInput" maxLength="1" />
                 </div>
                 <div className="col-2 createpin__form">
-                  <input type="text" placeholder="_" className="createpin__formInput" />
+                  <input type="text" placeholder="_" className="createpin__formInput" maxLength="1" />
                 </div>
                 <div className="col-2 createpin__form">
-                  <input type="text" placeholder="_" className="createpin__formInput" />
+                  <input type="text" placeholder="_" className="createpin__formInput" maxLength="1" />
                 </div>
               </div>
               <div className="createpin__button">

@@ -2,12 +2,24 @@ import React from "react";
 import Footer from "../../../components/Footer";
 import Menu from "../../../components/Menu";
 import Navbar from "../../../components/Navbar";
+import { useRouter } from "next/router";
 import { BsArrowUp, BsPlusLg } from "react-icons/bs";
+// import Topup from "../../../components/Topup";
 
 export default function Home() {
+  const router = useRouter();
+  const handleSeeall = (e) => {
+    e.preventDefault();
+    router.push("/main/history");
+  };
+  const handleTransfer = (e) => {
+    e.preventDefault();
+    router.push("/main/transfer");
+  };
   return (
     <div>
       <Navbar />
+      {/* <Topup /> */}
       <div className="home__main">
         <div className="container">
           <div className="home__content">
@@ -25,7 +37,7 @@ export default function Home() {
                     </div>
                     <div className="col-4">
                       <div className="home__balanceButton">
-                        <button className="home__balanceButtonSet">
+                        <button className="home__balanceButtonSet" onClick={handleTransfer}>
                           <BsArrowUp /> Transfer
                         </button>
                       </div>
@@ -48,7 +60,9 @@ export default function Home() {
                           <h1 className="home__transactionTittle">Transaction History</h1>
                         </div>
                         <div className="col-4">
-                          <button className="home__seeAllButton">see all</button>
+                          <button className="home__seeAllButton" onClick={handleSeeall}>
+                            see all
+                          </button>
                         </div>
                       </div>
                     </div>

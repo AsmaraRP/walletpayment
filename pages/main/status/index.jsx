@@ -4,12 +4,18 @@ import Image from "next/image";
 import Menu from "../../../components/Menu";
 import Navbar from "../../../components/Navbar";
 import { BsDownload } from "react-icons/bs";
+import { useRouter } from "next/router";
 
 export default function Status() {
-  const [statusTransfer, setStatusTransfer] = useState(true);
-  const handleDownload = (e) => {
+  const router = useRouter();
+  const [statusTransfer, setStatusTransfer] = useState(false);
+  const handleTryagain = (e) => {
     e.preventDefault();
     setStatusTransfer(!statusTransfer);
+  };
+  const handleHome = (e) => {
+    e.preventDefault();
+    router.push("/main/home");
   };
   return (
     <div>
@@ -64,13 +70,19 @@ export default function Status() {
                   </div>
                 </div>
                 {statusTransfer ? (
-                  <button className="status__downloadButton">
-                    <BsDownload /> Download PDF
+                  <div className="status__ok">
+                    <button className="status__downloadButton" onClick={handleTryagain}>
+                      <BsDownload /> Download PDF
+                    </button>
+                    <button className="status__button" onClick={handleHome}>
+                      Back to Home
+                    </button>
+                  </div>
+                ) : (
+                  <button className="status__button" onClick={handleTryagain}>
+                    Try Again
                   </button>
-                ) : null}
-                <button className="status__button" onClick={handleDownload}>
-                  {statusTransfer ? "Back To Home" : "Try Again"}
-                </button>
+                )}
               </div>
             </div>
           </div>

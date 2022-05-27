@@ -27,22 +27,22 @@ export default function ChangePin() {
                   <div className="pin__inputPin">
                     <div className="row">
                       <div className="col-2 pin__form">
-                        <input type="text" placeholder="_" className="pin__formInput" />
+                        <input type="text" placeholder="_" className="pin__formInput" maxLength="1" />
                       </div>
                       <div className="col-2 pin__form">
-                        <input type="text" placeholder="_" className="pin__formInput" />
+                        <input type="text" placeholder="_" className="pin__formInput" maxLength="1" />
                       </div>
                       <div className="col-2 pin__form">
-                        <input type="text" placeholder="_" className="pin__formInput" />
+                        <input type="text" placeholder="_" className="pin__formInput" maxLength="1" />
                       </div>
                       <div className="col-2 pin__form">
-                        <input type="text" placeholder="_" className="pin__formInput" />
+                        <input type="text" placeholder="_" className="pin__formInput" maxLength="1" />
                       </div>
                       <div className="col-2 pin__form">
-                        <input type="text" placeholder="_" className="pin__formInput" />
+                        <input type="text" placeholder="_" className="pin__formInput" maxLength="1" />
                       </div>
                       <div className="col-2 pin__form">
-                        <input type="text" placeholder="_" className="pin__formInput" />
+                        <input type="text" placeholder="_" className="pin__formInput" maxLength="1" />
                       </div>
                     </div>
                   </div>

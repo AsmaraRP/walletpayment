@@ -7,7 +7,7 @@ export default function Navbar() {
   const router = useRouter();
   const handleHome = (e) => {
     e.preventDefault();
-    router.push("main/home");
+    router.push("/main/home");
   };
   return (
     <div className="navbar__main">
