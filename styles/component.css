@@ -110,7 +110,11 @@
 }
 /* Styling for Top up Component */
 .topup__main {
-  padding-top: 10%;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
   padding-left: 40%;
   background: rgba(0, 0, 0, 0.5);
   height: 960px;

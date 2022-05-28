@@ -2,21 +2,24 @@ import React, { useState } from "react";
 import Footer from "../../../components/Footer";
 import Menu from "../../../components/Menu";
 import Navbar from "../../../components/Navbar";
+import Topup from "../../../components/Topup";
 
 export default function ChangePin() {
   const [changePin, setChangePin] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const handleChangePin = (e) => {
     e.preventDefault();
     setChangePin(!changePin);
   };
   return (
     <div>
+      <Topup showModal={showModal} setShowModal={setShowModal} />
       <Navbar />
       <div className="pin__main">
         <div className="container">
           <div className="row">
             <div className="col-3">
-              <Menu />
+              <Menu setShowModal={setShowModal} />
             </div>
             <div className="col-8">
               <div className="pin__content">

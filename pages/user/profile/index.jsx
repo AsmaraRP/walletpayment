@@ -1,24 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import Footer from "../../../components/Footer";
 import Menu from "../../../components/Menu";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import Navbar from "../../../components/Navbar";
+import Topup from "../../../components/Topup";
 import { BsArrowRight, BsBoxArrowRight } from "react-icons/bs";
 
 export default function Profile() {
   const router = useRouter();
+  const [showModal, setShowModal] = useState(false);
   const handleNavigate = (target) => {
     router.push(`/user/${target}`);
   };
   return (
     <div>
+      <Topup showModal={showModal} setShowModal={setShowModal} />
       <Navbar />
       <div className="profile__main">
         <div className="container">
           <div className="row">
             <div className="col-3">
-              <Menu />
+              <Menu setShowModal={setShowModal} />
             </div>
             <div className="col-8">
               <div className="profile__content">

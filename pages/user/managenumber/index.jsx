@@ -3,10 +3,11 @@ import Footer from "../../../components/Footer";
 import Menu from "../../../components/Menu";
 import Navbar from "../../../components/Navbar";
 import { BsTelephone, BsTrash } from "react-icons/bs";
+import Topup from "../../../components/Topup";
 
 export default function ManageNumber() {
   const [addNumber, setAddNumber] = useState(true);
-
+  const [showModal, setShowModal] = useState(false);
   const handleAddNumber = (e) => {
     e.preventDefault();
     setAddNumber(!addNumber);
@@ -14,12 +15,13 @@ export default function ManageNumber() {
 
   return (
     <div>
+      <Topup showModal={showModal} setShowModal={setShowModal} />
       <Navbar />
       <div className="phone__main">
         <div className="container">
           <div className="row">
             <div className="col-3">
-              <Menu />
+              <Menu setShowModal={setShowModal} />
             </div>
             <div className="col-8">
               <div className={addNumber ? "phone__content" : "phone__hide"}>

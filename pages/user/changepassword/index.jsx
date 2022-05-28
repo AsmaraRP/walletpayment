@@ -3,11 +3,13 @@ import Footer from "../../../components/Footer";
 import Menu from "../../../components/Menu";
 import Navbar from "../../../components/Navbar";
 import { BsLock } from "react-icons/bs";
+import Topup from "../../../components/Topup";
 
 export default function ChangePassword() {
   const [seePass1, setSeePass1] = useState(true);
   const [seePass2, setSeePass2] = useState(true);
   const [seePass3, setSeePass3] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   const handleChangePassword1 = (e) => {
     e.preventDefault();
     setSeePass1(!seePass1);
@@ -22,12 +24,13 @@ export default function ChangePassword() {
   };
   return (
     <div>
+      <Topup showModal={showModal} setShowModal={setShowModal} />
       <Navbar />
       <div className="password__main">
         <div className="container">
           <div className="row">
             <div className="col-3">
-              <Menu />
+              <Menu setShowModal={setShowModal} />
             </div>
             <div className="col-8">
               <div className="password__content">

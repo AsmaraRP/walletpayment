@@ -90,6 +90,40 @@
   line-height: 19px;
   color: #6379f4;
 }
+.home__cardHistory {
+  margin-top: 20px;
+  margin-left: 10px;
+}
+.home__historyName {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  color: #4d4b57;
+}
+.home__historyStatus {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  color: #7a7886;
+}
+.home__historyIn {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  text-align: right;
+  color: #1ec15f;
+}
+.home__historyOut {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  text-align: right;
+  color: #ff5b37;
+}
 /* Styling for History Page */
 .history__main {
   height: 750px;

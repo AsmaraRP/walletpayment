@@ -6,3 +6,15 @@ export const transfer = (data) => {
     payload: axios.post(`transaction/transfer`, data),
   };
 };
+export const topup = (data) => {
+  return {
+    type: "POST_TOPUP",
+    payload: axios.post(`transaction/top-up`, data),
+  };
+};
+export const dashboard = (id) => {
+  return {
+    type: "GET_DASHBOARD",
+    payload: axios.get(`dashboard/${id}`),
+  };
+};

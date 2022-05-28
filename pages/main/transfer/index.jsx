@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import axios from "../../../utils/axiosServer";
 import Cookies from "js-cookie";
 import moment from "moment";
+import Topup from "../../../components/Topup";
 
 export async function getServerSideProps(context) {
   console.log("RENDER WITH SERVER IS RUNNING");
@@ -38,6 +39,7 @@ export default function Transfer(props) {
   const router = useRouter();
   const dataUser = useSelector((state) => state.user.data);
   const dataListUser = props.data.data;
+  const [showModal, setShowModal] = useState(false);
   const [doTransfer, setDoTransfer] = useState(false);
   const [dataTransfer, setDataTransfer] = useState({});
   const handleCard = async (item) => {
@@ -61,12 +63,13 @@ export default function Transfer(props) {
   };
   return (
     <div>
+      <Topup showModal={showModal} setShowModal={setShowModal} />
       <Navbar />
       <div className="transfer__main">
         <div className="container">
           <div className="row">
             <div className="col-3">
-              <Menu />
+              <Menu setShowModal={setShowModal} />
             </div>
             <div className="col-8">
               <div className={doTransfer ? "transfer__contentHide" : "transfer__content"}>

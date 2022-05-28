@@ -8,6 +8,7 @@ import Cookies from "js-cookie";
 import { useDispatch } from "react-redux";
 import { transfer } from "../../../stores/actions/transaction";
 import { getUserById } from "../../../stores/actions/user";
+import Topup from "../../../components/Topup";
 
 export default function Confirmation() {
   const router = useRouter();
@@ -15,6 +16,7 @@ export default function Confirmation() {
   const idUser = Cookies.get("id");
   const dataTransfer = Cookies.get("dataTransfer") ? JSON.parse(Cookies.get("dataTransfer")) : {};
   const doTransfer = { receiverId: dataTransfer.id, amount: dataTransfer.nominal, notes: dataTransfer.note };
+  const [showModal, setShowModal] = useState(false);
   const handleTransfer = async (e) => {
     e.preventDefault();
     const resultTransfer = await dispatch(transfer(doTransfer));
@@ -24,12 +26,13 @@ export default function Confirmation() {
   };
   return (
     <div>
+      <Topup showModal={showModal} setShowModal={setShowModal} />
       <Navbar />
       <div className="confirmation__main">
         <div className="container">
           <div className="row">
             <div className="col-3">
-              <Menu />
+              <Menu setShowModal={setShowModal} />
             </div>
             <div className="col-8">
               <div className="confirmation__content">

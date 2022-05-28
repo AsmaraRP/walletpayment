@@ -5,12 +5,25 @@ import { useRouter } from "next/router";
 export default function CreatePin() {
   const router = useRouter();
   const [confirm, setConfirm] = useState(false);
+  const [pin, setPin] = useState({});
+
+  const addPin = (e) => {
+    if (e.target.value) {
+      const nextSibling = document.getElementById(`pin-${parseInt(e.target.name, 10) + 1}`);
+      if (nextSibling !== null) {
+        nextSibling.focus();
+      }
+    }
+    setPin({ ...pin, [`pin${e.target.name}`]: e.target.value });
+  };
   const handleLogin = (e) => {
     e.preventDefault();
     router.push("/auth/login");
   };
   const handleConfirm = (e) => {
     e.preventDefault();
+    const pinUser = pin.pin1 + pin.pin2 + pin.pin3 + pin.pin4 + pin.pin5 + pin.pin6;
+    console.log(pinUser);
     setConfirm(true);
   };
   return (
@@ -33,22 +46,22 @@ export default function CreatePin() {
             <form className="createpin__formMenu">
               <div className="row">
                 <div className="col-2 createpin__form">
-                  <input type="text" placeholder="_" className="createpin__formInput" maxLength="1" />
+                  <input type="text" placeholder="_" className="createpin__formInput" maxLength="1" id="pin-1" onChange={(e) => addPin(e)} name="1" />
                 </div>
                 <div className="col-2 createpin__form">
-                  <input type="text" placeholder="_" className="createpin__formInput" maxLength="1" />
+                  <input type="text" placeholder="_" className="createpin__formInput" maxLength="1" id="pin-2" onChange={(e) => addPin(e)} name="2" />
                 </div>
                 <div className="col-2 createpin__form">
-                  <input type="text" placeholder="_" className="createpin__formInput" maxLength="1" />
+                  <input type="text" placeholder="_" className="createpin__formInput" maxLength="1" id="pin-3" onChange={(e) => addPin(e)} name="3" />
                 </div>
                 <div className="col-2 createpin__form">
-                  <input type="text" placeholder="_" className="createpin__formInput" maxLength="1" />
+                  <input type="text" placeholder="_" className="createpin__formInput" maxLength="1" id="pin-4" onChange={(e) => addPin(e)} name="4" />
                 </div>
                 <div className="col-2 createpin__form">
-                  <input type="text" placeholder="_" className="createpin__formInput" maxLength="1" />
+                  <input type="text" placeholder="_" className="createpin__formInput" maxLength="1" id="pin-5" onChange={(e) => addPin(e)} name="5" />
                 </div>
                 <div className="col-2 createpin__form">
-                  <input type="text" placeholder="_" className="createpin__formInput" maxLength="1" />
+                  <input type="text" placeholder="_" className="createpin__formInput" maxLength="1" id="pin-6" onChange={(e) => addPin(e)} name="6" />
                 </div>
               </div>
               <div className="createpin__button">

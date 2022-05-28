@@ -7,12 +7,14 @@ import { BsDownload } from "react-icons/bs";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import Cookies from "js-cookie";
+import Topup from "../../../components/Topup";
 
 export default function Status() {
   const router = useRouter();
   const dataUser = useSelector((state) => state.user.data);
   const dataTransfer = Cookies.get("dataTransfer") ? JSON.parse(Cookies.get("dataTransfer")) : {};
   const [statusTransfer, setStatusTransfer] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   const handleTryagain = (e) => {
     e.preventDefault();
     setStatusTransfer(!statusTransfer);
@@ -24,23 +26,24 @@ export default function Status() {
   };
   return (
     <div>
+      <Topup showModal={showModal} setShowModal={setShowModal} />
       <Navbar />
       <div className="status__main">
         <div className="container">
           <div className="row">
             <div className="col-3">
-              <Menu />
+              <Menu setShowModal={setShowModal} />
             </div>
             <div className="col-8">
               <div className="status__content">
                 {statusTransfer ? (
                   <div className="status__transaction">
-                    <Image src="/success.png" width={60} height={60} />
+                    <Image src="/success.png" alt="succsess" width={60} height={60} />
                     <h1 className="status__transactionTittle">Transfer Success</h1>
                   </div>
                 ) : (
                   <div className="status__transaction">
-                    <Image src="/failed.png" width={60} height={60} />
+                    <Image src="/failed.png" alt="failed" width={60} height={60} />
                     <h1 className="status__transactionTittle">Transfer Failed</h1>
                     <p className="status__msg">We cant transfer your money at the moment, we recommend you to check your internet connection and try again.</p>
                   </div>
@@ -66,7 +69,7 @@ export default function Status() {
                 <div className="status__receiverCard">
                   <div className="row">
                     <div className="col-2">
-                      <Image src="/auth__mockup.png" width={50} height={50} />
+                      <Image src="/auth__mockup.png" alt="mockup" width={50} height={50} />
                     </div>
                     <div className="col-8">
                       <p className="status__nameCard">{dataTransfer.firstName + " " + dataTransfer.lastName}</p>

@@ -3,21 +3,24 @@ import Footer from "../../../components/Footer";
 import Menu from "../../../components/Menu";
 import Navbar from "../../../components/Navbar";
 import { useRouter } from "next/router";
+import Topup from "../../../components/Topup";
 
 export default function Informastion() {
   const router = useRouter();
+  const [showModal, setShowModal] = useState(false);
   const handleManage = (e) => {
     e.preventDefault();
     router.push("/user/managenumber");
   };
   return (
     <div>
+      <Topup showModal={showModal} setShowModal={setShowModal} />
       <Navbar />
       <div className="information__main">
         <div className="container">
           <div className="row">
             <div className="col-3">
-              <Menu />
+              <Menu setShowModal={setShowModal} />
             </div>
             <div className="col-8">
               <div className="information__content">

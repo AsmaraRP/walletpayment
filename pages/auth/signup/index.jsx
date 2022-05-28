@@ -3,11 +3,12 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { BsPerson, BsEnvelope, BsLock } from "react-icons/bs";
 import { useSelector, useDispatch } from "react-redux";
+import { register } from "../../../stores/actions/auth";
 
 export default function Signup() {
   const router = useRouter();
   const dispatch = useDispatch();
-  const [form, setForm] = useState({ firstName: "", lastName: "", email: "", password: "" });
+  const [form, setForm] = useState({});
 
   const handleChangeForm = (e) => {
     e.preventDefault();
@@ -16,7 +17,9 @@ export default function Signup() {
   const handleSignup = async (e) => {
     try {
       e.preventDefault();
-
+      console.log(form);
+      const result = await dispatch(register(form));
+      console.log(result);
       // router.push("/auth/createpin");
     } catch (error) {
       console.log(error);
@@ -55,7 +58,7 @@ export default function Signup() {
                     <BsPerson />
                   </div>
                   <div className="col-8 signin__form">
-                    <input type="text" placeholder="Enter your firstname" className="signin__formInput" name="firstName" onClick={handleChangeForm} />
+                    <input type="text" placeholder="Enter your firstname" className="signin__formInput" name="firstName" onChange={handleChangeForm} />
                   </div>
                 </div>
               </div>
@@ -65,7 +68,7 @@ export default function Signup() {
                     <BsPerson />
                   </div>
                   <div className="col-8 signin__form">
-                    <input type="text" placeholder="Enter your lastname" className="signin__formInput" name="lastName" onClick={handleChangeForm} />
+                    <input type="text" placeholder="Enter your lastname" className="signin__formInput" name="lastName" onChange={handleChangeForm} />
                   </div>
                 </div>
               </div>
@@ -75,7 +78,7 @@ export default function Signup() {
                     <BsEnvelope />
                   </div>
                   <div className="col-8 signin__form">
-                    <input type="email" placeholder="Enter your email" className="signin__formInput" name="email" onClick={handleChangeForm} />
+                    <input type="email" placeholder="Enter your email" className="signin__formInput" name="email" onChange={handleChangeForm} />
                   </div>
                 </div>
               </div>
@@ -85,7 +88,7 @@ export default function Signup() {
                     <BsLock />
                   </div>
                   <div className="col-7 signin__form">
-                    <input type={!seePass ? "text" : "password"} placeholder="Create your password" className="signin__formInput" name="password" onClick={handleChangeForm} />
+                    <input type={!seePass ? "text" : "password"} placeholder="Create your password" className="signin__formInput" name="password" onChange={handleChangeForm} />
                   </div>
                   <div className="col-1">
                     <button className="signin__changeType" onClick={handleChangePassword}>

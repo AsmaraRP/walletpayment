@@ -1,19 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "../../../components/Footer";
 import Menu from "../../../components/Menu";
 import Navbar from "../../../components/Navbar";
+import Topup from "../../../components/Topup";
 import { useRouter } from "next/router";
 import { BsArrowUp, BsPlusLg } from "react-icons/bs";
 import cookies from "next-cookies";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import axios from "../../../utils/axiosServer";
-// import Topup from "../../../components/Topup";
+import { dashboard } from "../../../stores/actions/transaction";
 
 export async function getServerSideProps(context) {
   console.log("RENDER WITH SERVER IS RUNNING");
   const dataCookie = cookies(context);
   const result = await axios
-    .get("transaction/history?page=1&limit=5&filter=MONTH", {
+    .get("transaction/history?page=1&limit=4&filter=MONTH", {
       headers: {
         Authorization: `Baerer ${dataCookie.token}`,
       },
@@ -25,7 +26,6 @@ export async function getServerSideProps(context) {
       console.log(err);
       return [];
     });
-  console.log(result.data);
   return {
     props: {
       data: result.data,
@@ -36,7 +36,22 @@ export async function getServerSideProps(context) {
 export default function Home(props) {
   const router = useRouter();
   console.log(props.data.data);
+  const dispatch = useDispatch();
   const dataUser = useSelector((state) => state.user.data);
+  useEffect(() => {
+    getDataDashboard();
+  }, [props.data.data]);
+
+  const getDataDashboard = async () => {
+    try {
+      const dataDashboard = await dispatch(dashboard(dataUser.id));
+      // console.log(dataDashboard.action.payload.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const [showModal, setShowModal] = useState(false);
   const handleSeeall = (e) => {
     e.preventDefault();
     router.push("/main/history");
@@ -47,14 +62,14 @@ export default function Home(props) {
   };
   return (
     <div>
+      <Topup showModal={showModal} setShowModal={setShowModal} />
       <Navbar />
-      {/* <Topup /> */}
       <div className="home__main">
         <div className="container">
           <div className="home__content">
             <div className="row">
               <div className="col-3">
-                <Menu />
+                <Menu setShowModal={setShowModal} />
               </div>
               <div className="col-8">
                 <div className="home__balance">
@@ -71,7 +86,7 @@ export default function Home(props) {
                         </button>
                       </div>
                       <div className="home__balanceButton">
-                        <button className="home__balanceButtonSet">
+                        <button className="home__balanceButtonSet" onClick={() => setShowModal(true)}>
                           <BsPlusLg /> Top Up
                         </button>
                       </div>
@@ -94,6 +109,20 @@ export default function Home(props) {
                           </button>
                         </div>
                       </div>
+                      {props.data.data.map((item) => (
+                        <div className="home__cardHistory" key={item.id}>
+                          <div className="row">
+                            <div className="col-2">Img</div>
+                            <div className="col-4">
+                              <p className="home__historyName">{item.firstName + " " + item.lastName}</p>
+                              <p className="home__historyStatus">{item.type === "send" ? "Transfer" : item.type === "topup" ? "topup" : "Accepted"}</p>
+                            </div>
+                            <div className="col-5">
+                              <p className={item.type === "send" ? "home__historyOut" : "home__historyIn"}>{item.type === "send" ? "- " + item.amount : "+ " + item.amount}</p>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
