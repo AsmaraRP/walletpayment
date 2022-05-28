@@ -2,16 +2,35 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { BsEnvelope, BsLock } from "react-icons/bs";
+import axios from "../../../utils/axios";
+import Cookies from "js-cookie";
+import { useDispatch } from "react-redux";
+import { getUserById } from "../../../stores/actions/user";
 
 export default function Login() {
   const router = useRouter();
+  const dispatch = useDispatch();
+  const [form, setForm] = useState({ email: "", password: "" });
+
+  const handleChangeForm = (e) => {
+    e.preventDefault();
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
   const handleSignup = (e) => {
     e.preventDefault();
     router.push("/auth/signup");
   };
-  const handleLogin = (e) => {
-    e.preventDefault();
-    router.push("/main/home");
+  const handleLogin = async (e) => {
+    try {
+      e.preventDefault();
+      const result = await axios.post("/auth/login", form);
+      Cookies.set("token", result.data.data.token);
+      Cookies.set("id", result.data.data.id);
+      await dispatch(getUserById(result.data.data.id));
+      router.push("/main/home");
+    } catch (error) {
+      console.log(error);
+    }
   };
   const handleForgot = (e) => {
     e.preventDefault();
@@ -46,7 +65,7 @@ export default function Login() {
                     <BsEnvelope />
                   </div>
                   <div className="col-8 login__form">
-                    <input type="email" placeholder="Enter your email" className="login__formInput" />
+                    <input type="email" placeholder="Enter your email" className="login__formInput" name="email" onChange={handleChangeForm} />
                   </div>
                 </div>
               </div>
@@ -56,7 +75,7 @@ export default function Login() {
                     <BsLock />
                   </div>
                   <div className="col-7 login__form">
-                    <input type={!seePass ? "text" : "password"} placeholder="Enter your password" className="login__formInput" />
+                    <input type={!seePass ? "text" : "password"} placeholder="Enter your password" className="login__formInput" name="password" onChange={handleChangeForm} />
                   </div>
                   <div className="col-1">
                     <button className="login__changeType" onClick={handleChangePassword}>

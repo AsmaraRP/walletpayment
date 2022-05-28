@@ -4,10 +4,39 @@ import Menu from "../../../components/Menu";
 import Navbar from "../../../components/Navbar";
 import { useRouter } from "next/router";
 import { BsArrowUp, BsPlusLg } from "react-icons/bs";
+import cookies from "next-cookies";
+import { useSelector } from "react-redux";
+import axios from "../../../utils/axiosServer";
 // import Topup from "../../../components/Topup";
 
-export default function Home() {
+export async function getServerSideProps(context) {
+  console.log("RENDER WITH SERVER IS RUNNING");
+  const dataCookie = cookies(context);
+  const result = await axios
+    .get("transaction/history?page=1&limit=5&filter=MONTH", {
+      headers: {
+        Authorization: `Baerer ${dataCookie.token}`,
+      },
+    })
+    .then((res) => {
+      return res;
+    })
+    .catch((err) => {
+      console.log(err);
+      return [];
+    });
+  console.log(result.data);
+  return {
+    props: {
+      data: result.data,
+    },
+  };
+}
+
+export default function Home(props) {
   const router = useRouter();
+  console.log(props.data.data);
+  const dataUser = useSelector((state) => state.user.data);
   const handleSeeall = (e) => {
     e.preventDefault();
     router.push("/main/history");
@@ -32,8 +61,8 @@ export default function Home() {
                   <div className="row">
                     <div className="col-8">
                       <p className="home__balanceTittle">Balance</p>
-                      <p className="home__balanceNominal">Rp 120.000</p>
-                      <p className="home__balancePhone">+62 813-9387-7946</p>
+                      <p className="home__balanceNominal">{"Rp. " + dataUser.balance}</p>
+                      <p className="home__balancePhone">{dataUser.noTelp}</p>
                     </div>
                     <div className="col-4">
                       <div className="home__balanceButton">

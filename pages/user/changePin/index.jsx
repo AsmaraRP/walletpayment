@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Footer from "../../../components/Footer";
 import Menu from "../../../components/Menu";
 import Navbar from "../../../components/Navbar";
-import { BsLock } from "react-icons/bs";
 
 export default function ChangePin() {
   const [changePin, setChangePin] = useState(false);

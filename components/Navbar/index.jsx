@@ -1,9 +1,13 @@
 import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Cookies from "js-cookie";
 import { BsFillPersonFill, BsBell } from "react-icons/bs";
+import { useSelector } from "react-redux";
 
 export default function Navbar() {
+  const dataUser = useSelector((state) => state.user);
+  const { firstName, lastName, noTelp, image } = dataUser.data;
   const router = useRouter();
   const handleHome = (e) => {
     e.preventDefault();
@@ -24,8 +28,8 @@ export default function Navbar() {
                 <BsFillPersonFill />
               </div>
               <div className="col-9 navbar__profile">
-                <h3 className="navbar__name">Robert Chandler</h3>
-                <h3 className="navbar__number">+62 8139 3877 7946</h3>
+                <h3 className="navbar__name">{firstName + " " + lastName}</h3>
+                <h3 className="navbar__number">{noTelp}</h3>
               </div>
               <div className="col-1 navbar__bell">
                 <BsBell />

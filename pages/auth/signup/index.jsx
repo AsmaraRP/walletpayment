@@ -2,21 +2,34 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { BsPerson, BsEnvelope, BsLock } from "react-icons/bs";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function Signup() {
   const router = useRouter();
-  const handleLogin = (e) => {
+  const dispatch = useDispatch();
+  const [form, setForm] = useState({ firstName: "", lastName: "", email: "", password: "" });
+
+  const handleChangeForm = (e) => {
     e.preventDefault();
-    router.push("/auth/login");
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
-  const handleSignup = (e) => {
-    e.preventDefault();
-    router.push("/auth/createpin");
+  const handleSignup = async (e) => {
+    try {
+      e.preventDefault();
+
+      // router.push("/auth/createpin");
+    } catch (error) {
+      console.log(error);
+    }
   };
   const [seePass, setSeePass] = useState(true);
   const handleChangePassword = (e) => {
     e.preventDefault();
     setSeePass(!seePass);
+  };
+  const handleLogin = (e) => {
+    e.preventDefault();
+    router.push("/auth/login");
   };
   return (
     <div className="signin__main">
@@ -42,7 +55,7 @@ export default function Signup() {
                     <BsPerson />
                   </div>
                   <div className="col-8 signin__form">
-                    <input type="text" placeholder="Enter your firstname" className="signin__formInput" />
+                    <input type="text" placeholder="Enter your firstname" className="signin__formInput" name="firstName" onClick={handleChangeForm} />
                   </div>
                 </div>
               </div>
@@ -52,7 +65,7 @@ export default function Signup() {
                     <BsPerson />
                   </div>
                   <div className="col-8 signin__form">
-                    <input type="text" placeholder="Enter your lastname" className="signin__formInput" />
+                    <input type="text" placeholder="Enter your lastname" className="signin__formInput" name="lastName" onClick={handleChangeForm} />
                   </div>
                 </div>
               </div>
@@ -62,7 +75,7 @@ export default function Signup() {
                     <BsEnvelope />
                   </div>
                   <div className="col-8 signin__form">
-                    <input type="email" placeholder="Enter your email" className="signin__formInput" />
+                    <input type="email" placeholder="Enter your email" className="signin__formInput" name="email" onClick={handleChangeForm} />
                   </div>
                 </div>
               </div>
@@ -72,7 +85,7 @@ export default function Signup() {
                     <BsLock />
                   </div>
                   <div className="col-7 signin__form">
-                    <input type={!seePass ? "text" : "password"} placeholder="Create your password" className="signin__formInput" />
+                    <input type={!seePass ? "text" : "password"} placeholder="Create your password" className="signin__formInput" name="password" onClick={handleChangeForm} />
                   </div>
                   <div className="col-1">
                     <button className="signin__changeType" onClick={handleChangePassword}>
