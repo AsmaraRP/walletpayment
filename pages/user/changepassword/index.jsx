@@ -2,14 +2,21 @@ import React, { useState } from "react";
 import Footer from "../../../components/Footer";
 import Menu from "../../../components/Menu";
 import Navbar from "../../../components/Navbar";
+import { useRouter } from "next/router";
 import { BsLock } from "react-icons/bs";
+import { useDispatch, useSelector } from "react-redux";
 import Topup from "../../../components/Topup";
+import { updatePasswordUser } from "../../../stores/actions/user";
 
 export default function ChangePassword() {
+  const router = useRouter();
   const [seePass1, setSeePass1] = useState(true);
   const [seePass2, setSeePass2] = useState(true);
   const [seePass3, setSeePass3] = useState(true);
   const [showModal, setShowModal] = useState(false);
+  const [form, setForm] = useState({});
+  const dispatch = useDispatch();
+  const dataUser = useSelector((state) => state.user.data);
   const handleChangePassword1 = (e) => {
     e.preventDefault();
     setSeePass1(!seePass1);
@@ -21,6 +28,21 @@ export default function ChangePassword() {
   const handleChangePassword3 = (e) => {
     e.preventDefault();
     setSeePass3(!seePass3);
+  };
+
+  const handleForm = (e) => {
+    e.preventDefault();
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      await dispatch(updatePasswordUser(dataUser.id, form));
+      alert("SUCCESS UPDATING PASSWORD");
+      router.push(`/user/profile`);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div>
@@ -43,7 +65,7 @@ export default function ChangePassword() {
                         <BsLock />
                       </div>
                       <div className="col-7 password__form">
-                        <input type={!seePass1 ? "text" : "password"} placeholder="Current password" className="password__formInput" />
+                        <input type={!seePass1 ? "text" : "password"} placeholder="Current password" className="password__formInput" onChange={handleForm} name="oldPassword" />
                       </div>
                       <div className="col-1">
                         <button className="password__changeType" onClick={handleChangePassword1}>
@@ -58,7 +80,7 @@ export default function ChangePassword() {
                         <BsLock />
                       </div>
                       <div className="col-7 password__form">
-                        <input type={!seePass2 ? "text" : "password"} placeholder="New password" className="password__formInput" />
+                        <input type={!seePass2 ? "text" : "password"} placeholder="New password" className="password__formInput" onChange={handleForm} name="newPassword" />
                       </div>
                       <div className="col-1">
                         <button className="password__changeType" onClick={handleChangePassword2}>
@@ -73,7 +95,7 @@ export default function ChangePassword() {
                         <BsLock />
                       </div>
                       <div className="col-7 password__form">
-                        <input type={!seePass3 ? "text" : "password"} placeholder="Repeat new password" className="password__formInput" />
+                        <input type={!seePass3 ? "text" : "password"} placeholder="Repeat new password" className="password__formInput" onChange={handleForm} name="confirmPassword" />
                       </div>
                       <div className="col-1">
                         <button className="password__changeType" onClick={handleChangePassword3}>
@@ -83,7 +105,9 @@ export default function ChangePassword() {
                     </div>
                   </div>
                   <div className="password__buttonChange">
-                    <button className="password__button">Change</button>
+                    <button className="password__button" onClick={handleSubmit}>
+                      Change
+                    </button>
                   </div>
                 </form>
               </div>

@@ -4,13 +4,41 @@ import Menu from "../../../components/Menu";
 import Navbar from "../../../components/Navbar";
 import { BsTelephone, BsTrash } from "react-icons/bs";
 import Topup from "../../../components/Topup";
+import { useRouter } from "next/router";
+import { useSelector, useDispatch } from "react-redux";
+import { updateUser, getUserById } from "../../../stores/actions/user";
 
 export default function ManageNumber() {
-  const [addNumber, setAddNumber] = useState(true);
+  const dispatch = useDispatch();
+  const router = useRouter();
   const [showModal, setShowModal] = useState(false);
-  const handleAddNumber = (e) => {
+  const dataUser = useSelector((state) => state.user.data);
+  const [number, setNumber] = useState(null);
+  const handleInputNumber = (e) => {
     e.preventDefault();
-    setAddNumber(!addNumber);
+    setNumber({ [e.target.name]: `+62${e.target.value}` });
+  };
+  const handleAddNumber = async (e) => {
+    try {
+      e.preventDefault();
+      await dispatch(updateUser(dataUser.id, number));
+      await dispatch(getUserById(dataUser.id));
+      alert("SUCCESS UPDATING NUMBER");
+      router.push(`/user/profile`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const handleDeleteNumber = async (e) => {
+    try {
+      e.preventDefault();
+      await dispatch(updateUser(dataUser.id, { noTelp: "" }));
+      await dispatch(getUserById(dataUser.id));
+      alert("SUCCESS DELETING NUMBER");
+      router.push(`/user/profile`);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -24,7 +52,7 @@ export default function ManageNumber() {
               <Menu setShowModal={setShowModal} />
             </div>
             <div className="col-8">
-              <div className={addNumber ? "phone__content" : "phone__hide"}>
+              <div className={dataUser.noTelp == null ? "phone__content" : "phone__hide"}>
                 <h1 className="phone__transactionTittle">Add Phone Number</h1>
                 <p className="phone__detail">Add at least one phone number for the transfer ID so you can start transfering your money to another user.</p>
                 <form>
@@ -37,7 +65,7 @@ export default function ManageNumber() {
                         <p>+62</p>
                       </div>
                       <div className="col-8 phone__form">
-                        <input type="text" placeholder="Enter your phone number" className="phone__formInput" />
+                        <input type="text" placeholder="Enter your phone number" className="phone__formInput" name="noTelp" onChange={handleInputNumber} />
                       </div>
                     </div>
                   </div>
@@ -48,17 +76,17 @@ export default function ManageNumber() {
                   </div>
                 </form>
               </div>
-              <div className={!addNumber ? "phone__content" : "phone__hide"}>
+              <div className={dataUser.noTelp != null ? "phone__content" : "phone__hide"}>
                 <h1 className="phone__transactionTittle">Manage Phone Number</h1>
                 <p className="phone__detail">You can only delete the phone number and then you must add another phone number.</p>
                 <div className="phone__detailCard mb-1">
                   <div className="row">
                     <div className="col-11">
                       <p className="phone__tittleDetail">Primary</p>
-                      <p className="phone__valueDetail">+62 813 9387 7946</p>
+                      <p className="phone__valueDetail">{dataUser.noTelp}</p>
                     </div>
                     <div className="col-1">
-                      <button className="phone__delete" onClick={handleAddNumber}>
+                      <button className="phone__delete" onClick={handleDeleteNumber}>
                         <BsTrash />
                       </button>
                     </div>

@@ -12,3 +12,15 @@ export const updateUser = (id, form) => {
     payload: axios.patch(`user/profile/${id}`, form),
   };
 };
+export const updatePasswordUser = (id, form) => {
+  return {
+    type: "UPDATE_PASSWORD_USER",
+    payload: axios.patch(`user/password/${id}`, form),
+  };
+};
+export const updatePinUser = (id, form) => {
+  return {
+    type: "UPDATE_PIN_USER",
+    payload: axios.patch(`user/pin/${id}`, form),
+  };
+};
