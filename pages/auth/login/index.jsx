@@ -27,7 +27,11 @@ export default function Login() {
       Cookies.set("token", result.data.data.token);
       Cookies.set("id", result.data.data.id);
       await dispatch(getUserById(result.data.data.id));
-      router.push("/main/home");
+      if (result.data.data.pin === null) {
+        router.push("/auth/createpin");
+      } else {
+        router.push("/main/home");
+      }
     } catch (error) {
       console.log(error);
     }

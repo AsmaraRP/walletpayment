@@ -20,7 +20,7 @@ export default function Signup() {
       console.log(form);
       const result = await dispatch(register(form));
       console.log(result);
-      // router.push("/auth/createpin");
+      router.push("/auth/login");
     } catch (error) {
       console.log(error);
     }

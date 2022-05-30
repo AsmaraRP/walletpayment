@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import Image from "next/image";
+import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
+import { createpin } from "../../../stores/actions/auth";
 
 export default function CreatePin() {
   const router = useRouter();
+  const dispatch = useDispatch();
   const [confirm, setConfirm] = useState(false);
-  const [pin, setPin] = useState({});
-
+  const [pinE, setPinE] = useState({});
+  const dataUser = useSelector((state) => state.user.data);
   const addPin = (e) => {
     if (e.target.value) {
       const nextSibling = document.getElementById(`pin-${parseInt(e.target.name, 10) + 1}`);
@@ -14,17 +17,21 @@ export default function CreatePin() {
         nextSibling.focus();
       }
     }
-    setPin({ ...pin, [`pin${e.target.name}`]: e.target.value });
+    setPinE({ ...pinE, [`pin${e.target.name}`]: e.target.value });
   };
   const handleLogin = (e) => {
     e.preventDefault();
-    router.push("/auth/login");
+    router.push("/main/home");
   };
-  const handleConfirm = (e) => {
-    e.preventDefault();
-    const pinUser = pin.pin1 + pin.pin2 + pin.pin3 + pin.pin4 + pin.pin5 + pin.pin6;
-    console.log(pinUser);
-    setConfirm(true);
+  const handleConfirm = async (e) => {
+    try {
+      e.preventDefault();
+      const pin = parseInt(pinE.pin1 + pinE.pin2 + pinE.pin3 + pinE.pin4 + pinE.pin5 + pinE.pin6);
+      await dispatch(createpin(dataUser.id, { pin }));
+      setConfirm(true);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div className="createpin__main">
@@ -79,7 +86,7 @@ export default function CreatePin() {
             <h2 className="createpin__description">Your PIN was successfully created and you can now access all the features in Zwallet. Login to your new account and start exploring!.</h2>
             <div className="createpin__buttonhide">
               <button className="createpin__createpin" onClick={handleLogin}>
-                Login Now
+                Continue
               </button>
             </div>
           </div>

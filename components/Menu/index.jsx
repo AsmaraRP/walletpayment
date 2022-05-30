@@ -17,7 +17,7 @@ export default function Menu({ setShowModal }) {
   const handleLogout = async () => {
     try {
       await dispatch(logout());
-      console.log;
+      router.push("/auth/login");
     } catch (error) {
       console.log(error);
     }

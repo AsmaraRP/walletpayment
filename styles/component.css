@@ -184,10 +184,13 @@
 }
 /* Styling for Confrim Pin Component */
 .confirmpin__main {
-  padding-top: 10%;
+  position: fixed;
+  width: 100%;
   padding-left: 40%;
   background: rgba(0, 0, 0, 0.5);
   height: 960px;
+  display: flex;
+  justify-content: center;
   text-align: center;
   align-items: center;
 }

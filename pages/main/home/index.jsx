@@ -40,7 +40,7 @@ export default function Home(props) {
   const dataUser = useSelector((state) => state.user.data);
   useEffect(() => {
     getDataDashboard();
-  }, [props.data.data]);
+  }, props.data.data);
 
   const getDataDashboard = async () => {
     try {

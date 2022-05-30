@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { transfer } from "../../../stores/actions/transaction";
 import { getUserById } from "../../../stores/actions/user";
 import Topup from "../../../components/Topup";
+import Confirmpin from "../../../components/Confirmpin";
 
 export default function Confirmation() {
   const router = useRouter();
@@ -17,16 +18,22 @@ export default function Confirmation() {
   const dataTransfer = Cookies.get("dataTransfer") ? JSON.parse(Cookies.get("dataTransfer")) : {};
   const doTransfer = { receiverId: dataTransfer.id, amount: dataTransfer.nominal, notes: dataTransfer.note };
   const [showModal, setShowModal] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(true);
   const handleTransfer = async (e) => {
-    e.preventDefault();
-    const resultTransfer = await dispatch(transfer(doTransfer));
-    console.log(resultTransfer.action.payload.data.data);
-    await dispatch(getUserById(idUser));
-    router.push("/main/status");
+    try {
+      e.preventDefault();
+      const resultTransfer = await dispatch(transfer(doTransfer));
+      console.log(resultTransfer.action.payload.data.data);
+      await dispatch(getUserById(idUser));
+      router.push("/main/status");
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div>
       <Topup showModal={showModal} setShowModal={setShowModal} />
+      <Confirmpin showConfirm={showConfirm} setShowConfirm={setShowConfirm} />
       <Navbar />
       <div className="confirmation__main">
         <div className="container">
