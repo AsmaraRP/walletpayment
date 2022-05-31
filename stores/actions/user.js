@@ -24,3 +24,15 @@ export const updatePinUser = (id, form) => {
     payload: axios.patch(`user/pin/${id}`, form),
   };
 };
+export const updateImage = (id, form) => {
+  return {
+    type: "UPDATE_IMAGE",
+    payload: axios.patch(`user/image/${id}`, form),
+  };
+};
+export const deleteImage = (id) => {
+  return {
+    type: "DELETE_IMAGE",
+    payload: axios.delete(`user/image/${id}`),
+  };
+};

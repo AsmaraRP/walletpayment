@@ -4,8 +4,10 @@ import Menu from "../../../components/Menu";
 import Navbar from "../../../components/Navbar";
 import Topup from "../../../components/Topup";
 import { useRouter } from "next/router";
-import { BsArrowUp, BsPlusLg } from "react-icons/bs";
+import Image from "next/dist/client/image";
+import { BsArrowUp, BsPlusLg, BsArrowDown } from "react-icons/bs";
 import cookies from "next-cookies";
+import Cookies from "js-cookie";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "../../../utils/axiosServer";
 import { dashboard } from "../../../stores/actions/transaction";
@@ -35,11 +37,11 @@ export async function getServerSideProps(context) {
 
 export default function Home(props) {
   const router = useRouter();
-  console.log(props.data.data);
   const dispatch = useDispatch();
   const dataUser = useSelector((state) => state.user.data);
   useEffect(() => {
     getDataDashboard();
+    Cookies.set("history", JSON.stringify(props.data.data));
   }, props.data.data);
 
   const getDataDashboard = async () => {
@@ -112,7 +114,9 @@ export default function Home(props) {
                       {props.data.data.map((item) => (
                         <div className="home__cardHistory" key={item.id}>
                           <div className="row">
-                            <div className="col-2">Img</div>
+                            <div className="col-2">
+                              <Image src={item.image ? process.env.URL_CLOUDINARY + item.image : "/photoProfile.jpg"} alt="photoProfile" width={70} height={70} className="home__Historyimage" />
+                            </div>
                             <div className="col-4">
                               <p className="home__historyName">{item.firstName + " " + item.lastName}</p>
                               <p className="home__historyStatus">{item.type === "send" ? "Transfer" : item.type === "topup" ? "topup" : "Accepted"}</p>

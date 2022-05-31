@@ -88,7 +88,7 @@ export default function Transfer(props) {
                   <div className="transfer__receiverCard" onClick={() => handleCard(item)} key={item.id}>
                     <div className="row">
                       <div className="col-2">
-                        <Image src="/auth__mockup.png" alt="user image" width={50} height={50} />
+                        <Image src={item.image ? process.env.URL_CLOUDINARY + item.image : "/photoProfile.jpg"} alt="photoProfile" width={70} height={70} className="home__Historyimage" />
                       </div>
                       <div className="col-8">
                         <p className="transfer__nameCard">{item.firstName + " " + item.lastName}</p>
@@ -104,7 +104,7 @@ export default function Transfer(props) {
                 <div className="transfer__receiverCard">
                   <div className="row">
                     <div className="col-2">
-                      <Image src="/auth__mockup.png" alt="user image" width={50} height={50} />
+                      <Image src={dataTransfer.image ? process.env.URL_CLOUDINARY + dataTransfer.image : "/photoProfile.jpg"} alt="photoProfile" width={70} height={70} className="home__Historyimage" />
                     </div>
                     <div className="col-8">
                       <p className="transfer__nameCard">{dataTransfer.firstName + " " + dataTransfer.lastName}</p>

@@ -19,6 +19,17 @@ input:focus {
   text-align: center;
   margin-bottom: 20px;
 }
+.profile__editButton {
+  border: none;
+  background: none;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 27px;
+  text-align: center;
+  color: #7a7886;
+}
 .profile__name {
   font-family: "Nunito Sans";
   font-style: normal;

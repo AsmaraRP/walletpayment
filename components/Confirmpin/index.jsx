@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useRouter } from "next/router";
 import { confirmpin } from "../../stores/actions/auth";
+import { BsFillBookmarkXFill } from "react-icons/bs";
 
 function Confirmpin({ showConfirm, setShowConfirm }) {
   const dispatch = useDispatch();
+  const router = useRouter();
   const [pinE, setPinE] = useState({});
   const addPin = (e) => {
     if (e.target.value) {
@@ -24,6 +27,11 @@ function Confirmpin({ showConfirm, setShowConfirm }) {
       console.log(error);
     }
   };
+  const handleCloseConfirm = (e) => {
+    e.preventDefault();
+    setShowConfirm(false);
+    router.push("/main/transfer");
+  };
 
   return (
     <>
@@ -34,6 +42,11 @@ function Confirmpin({ showConfirm, setShowConfirm }) {
               <div className="row">
                 <div className="col-10">
                   <h1 className="confirmpin__tittle">Enter PIN to Transfer</h1>
+                </div>
+                <div className="col-2">
+                  <button className="confirmpin__close" onClick={handleCloseConfirm}>
+                    <BsFillBookmarkXFill />
+                  </button>
                 </div>
               </div>
               <p className="confirmpin__des">Enter your 6 digits PIN for confirmation to continue transferring money. </p>

@@ -47,7 +47,7 @@ export default function Confirmation() {
                 <div className="confirmation__receiverCard">
                   <div className="row">
                     <div className="col-2">
-                      <Image src="/auth__mockup.png" alt="user imgage" width={50} height={50} />
+                      <Image src={dataTransfer.image ? process.env.URL_CLOUDINARY + dataTransfer.image : "/photoProfile.jpg"} alt="photoProfile" width={70} height={70} className="home__Historyimage" />
                     </div>
                     <div className="col-8">
                       <p className="confirmation__nameCard">{dataTransfer.firstName + " " + dataTransfer.lastName}</p>
