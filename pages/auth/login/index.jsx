@@ -4,13 +4,15 @@ import { useRouter } from "next/router";
 import { BsEnvelope, BsLock } from "react-icons/bs";
 import axios from "../../../utils/axios";
 import Cookies from "js-cookie";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getUserById } from "../../../stores/actions/user";
 
 export default function Login() {
   const router = useRouter();
   const dispatch = useDispatch();
   const [form, setForm] = useState({ email: "", password: "" });
+  const [isError, setIsError] = useState(false);
+  const [msg, setMsg] = useState("");
 
   const handleChangeForm = (e) => {
     e.preventDefault();
@@ -24,6 +26,7 @@ export default function Login() {
     try {
       e.preventDefault();
       const result = await axios.post("/auth/login", form);
+      console.log(result);
       Cookies.set("token", result.data.data.token);
       Cookies.set("id", result.data.data.id);
       await dispatch(getUserById(result.data.data.id));
@@ -32,8 +35,10 @@ export default function Login() {
       } else {
         router.push("/main/home");
       }
+      setIsError(false);
     } catch (error) {
-      console.log(error);
+      setMsg(error.response.data.msg);
+      setIsError(true);
     }
   };
   const handleForgot = (e) => {
@@ -93,6 +98,11 @@ export default function Login() {
                   Forgot Password?
                 </button>
               </div>
+              {!isError ? null : (
+                <div className="login__alert" role="alert">
+                  {msg}
+                </div>
+              )}
               <div className="login__button">
                 <button className="login__login" onClick={handleLogin}>
                   Log In

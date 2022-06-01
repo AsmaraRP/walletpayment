@@ -4,15 +4,25 @@ import { useRouter } from "next/router";
 import { BsEnvelope, BsLock } from "react-icons/bs";
 import axios from "../../../utils/axios";
 
-export default function ResetPassword() {
+export default function ResetPasswordUser() {
   const router = useRouter();
-  console.log(router.query);
-  const [confirm, setConfirm] = useState(false);
+  const idKey = router.query.id;
   const [isError, setIsError] = useState(false);
   const [msg, setMsg] = useState("");
-  const handleReset = (e) => {
-    e.preventDefault();
-    router.push("/auth/login");
+  const [confirm, setConfirm] = useState(true);
+  const handleReset = async (e) => {
+    try {
+      e.preventDefault();
+      const formChange = { ...form, keysChangePassword: idKey };
+      console.log(formChange);
+      await axios.patch("auth/reset-password", formChange);
+      alert("SUCCES RESET PASSWORD, PLEASE LOGIN!");
+      router.push("/auth/login");
+      setIsError(false);
+    } catch (error) {
+      setMsg(error.response.data.msg);
+      setIsError(true);
+    }
   };
   const [seePass, setSeePass] = useState(true);
   const [seePassConfirm, setSeePassConfirm] = useState(true);
@@ -30,16 +40,9 @@ export default function ResetPassword() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
   const handleConfirm = async (e) => {
-    try {
-      e.preventDefault();
-      const formReset = { ...form, linkDirect: "http://localhost:3000/auth/resetpassword" };
-      await axios.post("auth/forgot-password", formReset);
-      alert("CHECK YOUR EMAIL FOR CONTINUE RESET PASSWORD");
-      setIsError(false);
-    } catch (error) {
-      setMsg(error.response.data.msg);
-      setIsError(true);
-    }
+    e.preventDefault();
+    const formReset = { ...form, linkDirect: "http://localhost:3000/auth/resetpassword" };
+    await axios.post("auth/forgot-password", formReset);
   };
   return (
     <div className="resetpass__main">
@@ -69,11 +72,6 @@ export default function ResetPassword() {
                   </div>
                 </div>
               </div>
-              {!isError ? null : (
-                <div className="login__alert mt-4" role="alert">
-                  {msg}
-                </div>
-              )}
               <div className="resetpass__button">
                 <button className="resetpass__resetpass" onClick={handleConfirm}>
                   Confirm
@@ -93,7 +91,7 @@ export default function ResetPassword() {
                       <BsLock />
                     </div>
                     <div className="col-7 resetpass__form">
-                      <input type={!seePass ? "text" : "password"} placeholder="Create new password" className="resetpass__formInput" />
+                      <input type={!seePass ? "text" : "password"} placeholder="Create new password" className="resetpass__formInput" name="newPassword" onChange={handleForm} />
                     </div>
                     <div className="col-1">
                       <button className="resetpass__changeType" onClick={handleChangePassword}>
@@ -108,7 +106,7 @@ export default function ResetPassword() {
                       <BsLock />
                     </div>
                     <div className="col-7 resetpass__form">
-                      <input type={!seePassConfirm ? "text" : "password"} placeholder="Confirm new password" className="resetpass__formInput" />
+                      <input type={!seePassConfirm ? "text" : "password"} placeholder="Confirm new password" className="resetpass__formInput" name="confirmPassword" onChange={handleForm} />
                     </div>
                     <div className="col-1">
                       <button className="resetpass__changeType" onClick={handleChangePasswordConfirm}>
@@ -117,6 +115,11 @@ export default function ResetPassword() {
                     </div>
                   </div>
                 </div>
+                {!isError ? null : (
+                  <div className="login__alert mt-4" role="alert">
+                    {msg}
+                  </div>
+                )}
                 <div className="resetpass__button">
                   <button className="resetpass__resetpass" onClick={handleReset}>
                     Reset Password

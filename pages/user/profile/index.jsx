@@ -3,48 +3,23 @@ import Footer from "../../../components/Footer";
 import Menu from "../../../components/Menu";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import Cookies from "js-cookie";
 import Navbar from "../../../components/Navbar";
 import Topup from "../../../components/Topup";
 import { BsArrowRight, BsBoxArrowRight, BsPencil, BsTrash, BsUpload } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../../../stores/actions/auth";
 import axios from "../../../utils/axios";
 import Edit from "../../../components/Edit";
 import { getUserById } from "../../../stores/actions/user";
 import Upload from "../../../components/upload";
 
-export async function getServerSideProps(context) {
-  try {
-    const dataCookie = cookies(context);
-    const params = context.query;
-    const keySearch = params.search ? params.search : "";
-    const result = await axios.get(`user?page=1&limit=4&search=${keySearch}&sort=firstName ASC`, {
-      headers: {
-        Authorization: `Baerer ${dataCookie.token}`,
-      },
-    });
-    return {
-      props: {
-        data: result.data,
-      },
-    };
-  } catch (error) {
-    return {
-      redirect: {
-        destination: "/auth/login",
-        permanent: false,
-      },
-    };
-  }
-}
-
-export default function Profile(props) {
+export default function Profile() {
   const dispatch = useDispatch;
   const router = useRouter();
   const dataUser = useSelector((state) => state.user.data);
   console.log(dataUser.id);
   useEffect(() => {
-    getDataByUserId, [];
+    getDataByUserId(), [];
   });
   const getDataByUserId = async () => {
     try {
@@ -64,7 +39,7 @@ export default function Profile(props) {
     try {
       e.preventDefault();
       await axios.delete(`/user/image/${dataUser.id}`);
-      alert("SUCCESS DELETING IMAGE");
+      alert("SUCCESS DELETING IMAGE, PLEASE RE-LOGIN FOR UPDATING IMAGE");
     } catch (error) {
       console.log(error);
     }

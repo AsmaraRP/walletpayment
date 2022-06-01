@@ -9,6 +9,8 @@ export default function Signup() {
   const router = useRouter();
   const dispatch = useDispatch();
   const [form, setForm] = useState({});
+  const [isError, setIsError] = useState(false);
+  const [msg, setMsg] = useState("");
 
   const handleChangeForm = (e) => {
     e.preventDefault();
@@ -17,12 +19,13 @@ export default function Signup() {
   const handleSignup = async (e) => {
     try {
       e.preventDefault();
-      console.log(form);
       const result = await dispatch(register(form));
-      console.log(result);
+      alert("REGRISTRATION SUCCESS, PLEASE CHECK YOUR EMAIL");
       router.push("/auth/login");
+      setIsError(false);
     } catch (error) {
-      console.log(error);
+      setMsg(error.response.data.msg);
+      setIsError(true);
     }
   };
   const [seePass, setSeePass] = useState(true);
@@ -82,7 +85,7 @@ export default function Signup() {
                   </div>
                 </div>
               </div>
-              <div className="signin__setForm">
+              <div className="signin__setForm mb-4">
                 <div className="row mt-5">
                   <div className="col-2 signin__icon">
                     <BsLock />
@@ -97,6 +100,11 @@ export default function Signup() {
                   </div>
                 </div>
               </div>
+              {!isError ? null : (
+                <div className="login__alert" role="alert">
+                  {msg}
+                </div>
+              )}
               <div className="signin__button">
                 <button className="signin__signIn" onClick={handleSignup}>
                   Sign Up

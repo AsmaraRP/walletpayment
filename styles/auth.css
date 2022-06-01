@@ -89,7 +89,7 @@
 .signin__setForm {
   margin-left: 5%;
   width: 80%;
-  border-bottom: 1px solid #88888f;
+  border-bottom: 1px solid #6379f4;
 }
 .signin__formInput {
   font-family: "Nunito Sans";
@@ -97,7 +97,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 23px;
-  color: rgba(169, 169, 169, 0.8);
+  color: #6379f4;
   width: 300px;
   border: none;
 }
@@ -112,15 +112,11 @@
 .signin__signIn {
   width: 390px;
   height: 50px;
-  background-color: #dadada;
-  color: #88888f;
+  background-color: #6379f4;
+  color: #ffffff;
   border: none;
   box-shadow: 0px 6px 75px rgba(100, 87, 87, 0.05);
   border-radius: 12px;
-}
-.signin__signIn:hover {
-  background-color: #6379f4;
-  color: #ffffff;
 }
 .signin__switch {
   padding-top: 30px;
@@ -174,7 +170,7 @@
 .login__setForm {
   margin-left: 5%;
   width: 80%;
-  border-bottom: 1px solid #88888f;
+  border-bottom: 1px solid #6379f4;
 }
 .login__description {
   margin-top: 20px;
@@ -201,7 +197,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 23px;
-  color: rgba(169, 169, 169, 0.8);
+  color: #6379f4;
   width: 300px;
   border: none;
 }
@@ -216,15 +212,11 @@
 .login__login {
   width: 390px;
   height: 50px;
-  background-color: #dadada;
-  color: #88888f;
+  background-color: #6379f4;
+  color: #ffffff;
   border: none;
   box-shadow: 0px 6px 75px rgba(100, 87, 87, 0.05);
   border-radius: 12px;
-}
-.login__login:hover {
-  background-color: #6379f4;
-  color: #ffffff;
 }
 .login__switch {
   padding-top: 30px;
@@ -259,6 +251,17 @@
   background: none;
   color: #6379f4;
   font-weight: 700;
+}
+.login__alert {
+  width: 90%;
+  background-color: #fde0d9;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 32px;
+  text-align: center;
+  color: #ff5b37;
 }
 /* Styling For Create Pin Page */
 .createpin__main {
@@ -310,12 +313,17 @@
   font-size: 16px;
   line-height: 23px;
   text-align: center;
-  color: rgba(169, 169, 169, 0.8);
+  color: #6379f4;
   width: 50px;
   height: 60px;
   border: 2px solid rgba(169, 169, 169, 0.8);
   background: #ffffff;
   border: 1px solid rgba(169, 169, 169, 0.6);
+  box-shadow: 0px 10px 75px rgba(147, 147, 147, 0.1);
+  border-radius: 10px;
+}
+.createpin__formInput:focus {
+  border: 2px solid #6379f4;
   box-shadow: 0px 10px 75px rgba(147, 147, 147, 0.1);
   border-radius: 10px;
 }
@@ -329,15 +337,11 @@
 .createpin__createpin {
   width: 390px;
   height: 50px;
-  background-color: #dadada;
-  color: #88888f;
+  background-color: #6379f4;
+  color: #ffffff;
   border: none;
   box-shadow: 0px 6px 75px rgba(100, 87, 87, 0.05);
   border-radius: 12px;
-}
-.createpin__createpin:hover {
-  background-color: #6379f4;
-  color: #ffffff;
 }
 .createpin__contenthide {
   background-color: #ffffff;
@@ -397,7 +401,7 @@
 .resetpass__setForm {
   margin-left: 5%;
   width: 80%;
-  border-bottom: 1px solid #88888f;
+  border-bottom: 1px solid #6379f4;
 }
 .resetpass__formMenu {
   margin-top: 150px;
@@ -413,7 +417,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 23px;
-  color: rgba(169, 169, 169, 0.8);
+  color: #6379f4;
   width: 300px;
   border: none;
 }
@@ -428,15 +432,11 @@
 .resetpass__resetpass {
   width: 390px;
   height: 50px;
-  background-color: #dadada;
-  color: #88888f;
+  background-color: #6379f4;
+  color: #ffffff;
   border: none;
   box-shadow: 0px 6px 75px rgba(100, 87, 87, 0.05);
   border-radius: 12px;
-}
-.resetpass__resetpass:hover {
-  background-color: #6379f4;
-  color: #ffffff;
 }
 .resetpass__contenthide {
   background-color: #ffffff;

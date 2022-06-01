@@ -15,6 +15,8 @@ export default function ChangePassword() {
   const [seePass3, setSeePass3] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [form, setForm] = useState({});
+  const [isError, setIsError] = useState(false);
+  const [msg, setMsg] = useState("");
   const dispatch = useDispatch();
   const dataUser = useSelector((state) => state.user.data);
   const handleChangePassword1 = (e) => {
@@ -40,8 +42,11 @@ export default function ChangePassword() {
       await dispatch(updatePasswordUser(dataUser.id, form));
       alert("SUCCESS UPDATING PASSWORD");
       router.push(`/user/profile`);
+      setIsError(false);
     } catch (error) {
       console.log(error);
+      setMsg(error.response.data.msg);
+      setIsError(true);
     }
   };
   return (
@@ -104,7 +109,12 @@ export default function ChangePassword() {
                       </div>
                     </div>
                   </div>
-                  <div className="password__buttonChange">
+                  {!isError ? null : (
+                    <div className="login__alert" role="alert">
+                      {msg}
+                    </div>
+                  )}
+                  <div className="password__buttonChange mt-2">
                     <button className="password__button" onClick={handleSubmit}>
                       Change
                     </button>

@@ -13,6 +13,8 @@ export default function ChangePin() {
   const dataUser = useSelector((state) => state.user.data);
   const [changePin, setChangePin] = useState(true);
   const [showModal, setShowModal] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [msg, setMsg] = useState("");
   const dispatch = useDispatch();
   const [pinE, setPinE] = useState({});
   const addPin = (e) => {
@@ -41,8 +43,10 @@ export default function ChangePin() {
       await dispatch(updatePinUser(dataUser.id, { pin: pin }));
       alert("SUCCESS UPDATE PIN");
       router.push(`/user/profile`);
+      setIsError(false);
     } catch (error) {
-      console.log(error);
+      setMsg(error.response.data.msg);
+      setIsError(true);
     }
   };
   return (

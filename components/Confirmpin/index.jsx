@@ -8,6 +8,8 @@ function Confirmpin({ showConfirm, setShowConfirm }) {
   const dispatch = useDispatch();
   const router = useRouter();
   const [pinE, setPinE] = useState({});
+  const [isError, setIsError] = useState(false);
+  const [msg, setMsg] = useState("");
   const addPin = (e) => {
     if (e.target.value) {
       const nextSibling = document.getElementById(`pin-${parseInt(e.target.name, 10) + 1}`);
@@ -23,8 +25,10 @@ function Confirmpin({ showConfirm, setShowConfirm }) {
       const pin = parseInt(pinE.pin1 + pinE.pin2 + pinE.pin3 + pinE.pin4 + pinE.pin5 + pinE.pin6);
       await dispatch(confirmpin(pin));
       setShowConfirm(false);
+      setIsError(false);
     } catch (error) {
-      console.log(error);
+      setMsg(error.response.data.msg);
+      setIsError(true);
     }
   };
   const handleCloseConfirm = (e) => {
@@ -51,7 +55,7 @@ function Confirmpin({ showConfirm, setShowConfirm }) {
               </div>
               <p className="confirmpin__des">Enter your 6 digits PIN for confirmation to continue transferring money. </p>
               <form className="confirmpin__setForm">
-                <div className="row">
+                <div className="row mb-4">
                   <div className="col-2 confirmpin__form">
                     <input type="text" placeholder="_" className="createpin__formInput" maxLength="1" id="pin-1" onChange={(e) => addPin(e)} name="1" />
                   </div>
@@ -71,6 +75,11 @@ function Confirmpin({ showConfirm, setShowConfirm }) {
                     <input type="text" placeholder="_" className="createpin__formInput" maxLength="1" id="pin-6" onChange={(e) => addPin(e)} name="6" />
                   </div>
                 </div>
+                {!isError ? null : (
+                  <div className="login__alert" role="alert">
+                    {msg}
+                  </div>
+                )}
                 <div className="confirmpin__button">
                   <button className="confirmpin__submitButton" onClick={handleConfirm}>
                     Continue

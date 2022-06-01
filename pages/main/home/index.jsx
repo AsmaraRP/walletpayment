@@ -77,9 +77,8 @@ export default function Home(props) {
   };
 
   // CHART SETTING
-  console.log(dataIncome);
-  const incomeDefault = [1300000, 2000000, 200000, 0, 0, 0, 0];
-  const expenseDefault = [320000, 10001, 1570000, 0, 0, 0, 0];
+  // const incomeDefault = [1300000, 2000000, 200000, 0, 0, 0, 0];
+  // const expenseDefault = [320000, 10001, 1570000, 0, 0, 0, 0];
   const data = {
     labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
     datasets: [
@@ -88,7 +87,8 @@ export default function Home(props) {
         fill: false,
         backgroundColor: "#1EC15F",
         borderColor: "#1EC15F",
-        data: dataIncome[3] ? dataIncome : incomeDefault,
+        data: dataIncome,
+        // data: dataIncome[3] ? dataIncome : {incomeDefault},
         // yAxisID: "y-axis-1",
       },
       {
@@ -96,7 +96,8 @@ export default function Home(props) {
         fill: false,
         backgroundColor: "#FF5B37",
         borderColor: "#FF5B37",
-        data: dataExpense[3] ? dataExpense : expenseDefault,
+        data: dataExpense,
+        // data: dataExpense[3] ? dataExpense : expenseDefault,
         // yAxisID: "y-axis-2",
       },
     ],
@@ -184,7 +185,9 @@ export default function Home(props) {
                             <p className="home__dashboardAmount">{dataDashboard.totalExpense ? "Rp " + dataDashboard.totalExpense : "Rp 0"}</p>
                           </div>
                         </div>
-                        <p className="home__dashboardChartTittle">Distribution Chart</p>
+                        <button className="home__dashboardChartTittle" onClick={() => getDataDashboard()}>
+                          Refresh Chart
+                        </button>
 
                         <Line data={data} options={options} />
                       </div>

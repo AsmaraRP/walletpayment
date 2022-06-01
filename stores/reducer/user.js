@@ -73,7 +73,7 @@ const user = (state = initialState, action) => {
         ...state,
         isLoading: false,
         isError: true,
-        msg: action.payload.data.msg,
+        msg: action.payload.response.data.msg,
       };
     }
     case "UPDATE_PIN_USER_PENDING": {
