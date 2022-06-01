@@ -148,7 +148,12 @@ export default function Home(props) {
                   <div className="row">
                     <div className="col-8">
                       <p className="home__balanceTittle">Balance</p>
-                      <p className="home__balanceNominal">{"Rp. " + dataUser.balance}</p>
+                      <p className="home__balanceNominal">
+                        {dataUser.balance.toLocaleString("en-US", {
+                          style: "currency",
+                          currency: "IDR",
+                        })}
+                      </p>
                       <p className="home__balancePhone">{dataUser.noTelp}</p>
                     </div>
                     <div className="col-4">
@@ -175,14 +180,28 @@ export default function Home(props) {
                               <BsArrowDown size={30} />
                             </div>
                             <p className="home__dashboardTypeTransaction">Income</p>
-                            <p className="home__dashboardAmount">{dataDashboard.totalIncome ? "Rp " + dataDashboard.totalIncome : "Rp 0"}</p>
+                            <p className="home__dashboardAmount">
+                              {dataDashboard.totalIncome
+                                ? dataDashboard.totalIncome.toLocaleString("en-US", {
+                                    style: "currency",
+                                    currency: "IDR",
+                                  })
+                                : "IDR 0"}
+                            </p>
                           </div>
                           <div className="col-6">
                             <div className="home__dashboardArrowUp">
                               <BsArrowUp size={30} />
                             </div>
-                            <p className="home__dasboardTypeTransaction">Expense</p>
-                            <p className="home__dashboardAmount">{dataDashboard.totalExpense ? "Rp " + dataDashboard.totalExpense : "Rp 0"}</p>
+                            <p className="home__dashboardTypeTransaction">Expense</p>
+                            <p className="home__dashboardAmount">
+                              {dataDashboard.totalExpense
+                                ? dataDashboard.totalExpense.toLocaleString("en-US", {
+                                    style: "currency",
+                                    currency: "IDR",
+                                  })
+                                : "IDR 0"}
+                            </p>
                           </div>
                         </div>
                         <button className="home__dashboardChartTittle" onClick={() => getDataDashboard()}>
@@ -214,7 +233,19 @@ export default function Home(props) {
                               <p className="home__historyStatus">{item.type === "send" ? "Transfer" : item.type === "topup" ? "topup" : "Accepted"}</p>
                             </div>
                             <div className="col-5">
-                              <p className={item.type === "send" ? "home__historyOut" : "home__historyIn"}>{item.type === "send" ? "- " + item.amount : "+ " + item.amount}</p>
+                              <p className={item.type === "send" ? "home__historyOut" : "home__historyIn"}>
+                                {item.type === "send"
+                                  ? "- " +
+                                    item.amount.toLocaleString("en-US", {
+                                      style: "currency",
+                                      currency: "IDR",
+                                    })
+                                  : "+ " +
+                                    item.amount.toLocaleString("en-US", {
+                                      style: "currency",
+                                      currency: "IDR",
+                                    })}
+                              </p>
                             </div>
                           </div>
                         </div>

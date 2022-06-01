@@ -128,7 +128,12 @@ export default function Transfer(props) {
                 <p className="transfer__information">Type the amount you want to transfer and then press continue to the next steps.</p>
                 <form>
                   <input type="text" className="transfer__nominal" placeholder="0.00" name="nominal" onChange={handleDataTransfer} />
-                  <p className="transfer__saldo">{"Rp " + dataUser.balance + " Available"}</p>
+                  <p className="transfer__saldo">
+                    {dataUser.balance.toLocaleString("en-US", {
+                      style: "currency",
+                      currency: "IDR",
+                    }) + " Available"}
+                  </p>
                   <div className="transfer__note">
                     <div className="row">
                       <div className="col-2">

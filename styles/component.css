@@ -400,3 +400,14 @@
   width: 80%;
   height: 50px;
 }
+@media screen and (max-width: 800px) {
+  .menu__main {
+    display: none;
+  }
+  .footer__main {
+    display: none;
+  }
+  .navbar__main {
+    display: none;
+  }
+}

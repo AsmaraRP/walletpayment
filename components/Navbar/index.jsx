@@ -49,7 +49,12 @@ export default function Navbar() {
                     <div className={item.type === "send" ? "col-2 navbar__arrowUp" : "col-2 navbar__arrowDown"}>{item.type === "send" ? <BsArrowUp size={40} /> : <BsArrowDown size={40} />}</div>
                     <div className="col-7">
                       <p className="navbar__historyName">{item.type == "topup" ? "Top Up" : item.type === "send" ? "Transfer to " + item.firstName : "Accept from " + item.firstName}</p>
-                      <p className="navbar__historyAmount">{"Rp" + item.amount}</p>
+                      <p className="navbar__historyAmount">
+                        {item.amount.toLocaleString("en-US", {
+                          style: "currency",
+                          currency: "IDR",
+                        })}
+                      </p>
                     </div>
                   </div>
                 </div>

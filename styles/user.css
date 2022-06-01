@@ -411,3 +411,33 @@ input:focus {
   border: none;
   background: none;
 }
+@media screen and (max-width: 800px) {
+  .profile__content {
+    position: relative;
+    padding: 0px;
+    padding-top: 10px;
+    left: -100px;
+    width: 400px;
+  }
+  .information__content {
+    height: 800px;
+    position: relative;
+    padding: 0px;
+    padding-top: 10px;
+    padding-left: 10px;
+    left: -100px;
+    width: 400px;
+  }
+  .information__transactionTittle {
+    position: relative;
+    left: 50px;
+  }
+  .information__detail {
+    position: relative;
+    left: 50px;
+  }
+  .information__button {
+    position: relative;
+    left: -50px;
+  }
+}

@@ -46,7 +46,6 @@
   height: 960px;
 }
 .signin__menu {
-  background-color: aqua;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
 }
 .signin__content {
@@ -109,6 +108,9 @@
   font-weight: 700;
   font-size: 18px;
 }
+.signin__mobileTittle {
+  display: none;
+}
 .signin__signIn {
   width: 390px;
   height: 50px;
@@ -149,8 +151,10 @@
   height: 960px;
 }
 .login__menu {
-  background-color: aqua;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+}
+.login__mobileTittle {
+  display: none;
 }
 .login__content {
   background-color: #ffffff;
@@ -460,4 +464,69 @@
   background: none;
   color: #6379f4;
   font-weight: 700;
+}
+
+/* responsive */
+@media screen and (max-width: 800px) {
+  .auth__banner {
+    display: none;
+  }
+  .signin__info {
+    display: none;
+  }
+  .signin__description {
+    display: none;
+  }
+  .signin__content {
+    height: 1000px;
+    width: 500px;
+  }
+  .signin__formMenu {
+    width: 410px;
+  }
+  .signin__mobileTittle {
+    display: flex;
+    font-family: "Nunito Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 33px;
+    color: #3a3d42;
+    text-align: center;
+  }
+  .signin__icon {
+    display: none;
+  }
+  .signin__signIn {
+    width: 80%;
+  }
+  .login__info {
+    display: none;
+  }
+  .login__description {
+    display: none;
+  }
+  .login__content {
+    height: 1000px;
+    width: 500px;
+  }
+  .login__formMenu {
+    width: 410px;
+  }
+  .login__mobileTittle {
+    display: flex;
+    font-family: "Nunito Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 33px;
+    color: #3a3d42;
+    text-align: center;
+  }
+  .login__icon {
+    display: none;
+  }
+  .login__login {
+    width: 80%;
+  }
 }

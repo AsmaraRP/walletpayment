@@ -545,3 +545,31 @@
   text-align: center;
   color: #6379f4;
 }
+@media screen and (max-width: 800px) {
+  .home__balance {
+    width: 450px;
+    position: relative;
+    left: -50px;
+  }
+  .home__balanceButtonSet {
+    position: relative;
+    background-color: #b5bdcc;
+    top: 150px;
+    left: -280px;
+    width: 200px;
+  }
+  .home__dashboard {
+    width: 400px;
+  }
+  .home__transaction {
+    width: 900px;
+    position: relative;
+    top: 650px;
+    left: -280px;
+  }
+  .home__chart {
+    position: relative;
+    top: 150px;
+    left: -50px;
+  }
+}

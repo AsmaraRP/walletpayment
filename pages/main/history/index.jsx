@@ -105,7 +105,19 @@ export default function History(props) {
                             <p className="home__historyStatus">{item.type === "send" ? "Transfer" : item.type === "topup" ? "topup" : "Accepted"}</p>
                           </div>
                           <div className="col-5">
-                            <p className={item.type === "send" ? "home__historyOut" : "home__historyIn"}>{item.type === "send" ? "- " + item.amount : "+ " + item.amount}</p>
+                            <p className={item.type === "send" ? "home__historyOut" : "home__historyIn"}>
+                              {item.type === "send"
+                                ? "- " +
+                                  item.amount.toLocaleString("en-US", {
+                                    style: "currency",
+                                    currency: "IDR",
+                                  })
+                                : "+ " +
+                                  item.amount.toLocaleString("en-US", {
+                                    style: "currency",
+                                    currency: "IDR",
+                                  })}
+                            </p>
                           </div>
                         </div>
                       </div>

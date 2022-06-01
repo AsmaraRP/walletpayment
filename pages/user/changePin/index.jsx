@@ -32,8 +32,10 @@ export default function ChangePin() {
       const pin = parseInt(pinE.pin1 + pinE.pin2 + pinE.pin3 + pinE.pin4 + pinE.pin5 + pinE.pin6);
       await dispatch(confirmpin(pin));
       setChangePin(!changePin);
+      etIsError(false);
     } catch (error) {
-      console.log(error);
+      setMsg(error.response.data.msg);
+      setIsError(true);
     }
   };
   const handleSubmitPin = async (e) => {
@@ -86,6 +88,11 @@ export default function ChangePin() {
                       </div>
                     </div>
                   </div>
+                  {!isError ? null : (
+                    <div className="login__alert mb-3" role="alert">
+                      {msg}
+                    </div>
+                  )}
                   <div className="pin__buttonChange">
                     <button className="pin__button" onClick={handleChangePin}>
                       Continue

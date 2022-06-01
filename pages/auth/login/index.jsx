@@ -65,6 +65,7 @@ export default function Login() {
             </p>
           </div>
           <div className="col-5 login__content">
+            <h1 className="login__mobileTittle">Log In</h1>
             <h1 className="login__info">Start Accessing Banking Needs With All Devices and All Platforms With 30.000+ Users</h1>
             <h2 className="login__description">Transfering money is eassier than ever, you can access Zwallet wherever you are. Desktop, laptop, mobile phone? we cover all of that for you!</h2>
             <form className="login__formMenu">

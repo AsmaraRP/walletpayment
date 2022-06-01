@@ -52,6 +52,7 @@ export default function Signup() {
             </p>
           </div>
           <div className="col-5 signin__content">
+            <h1 className="signin__mobileTittle">Sign Up</h1>
             <h1 className="signin__info">Start Accessing Banking Needs With All Devices and All Platforms With 30.000+ Users</h1>
             <h2 className="signin__description">Transfering money is eassier than ever, you can access Zwallet wherever you are. Desktop, laptop, mobile phone? we cover all of that for you!</h2>
             <form className="signin__formMenu">

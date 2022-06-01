@@ -58,11 +58,21 @@ export default function Confirmation() {
                 <h1 className="confirmation__transactionTittle mt-2">Details</h1>
                 <div className="confirmation__detailCard mb-1">
                   <p className="confirmation__tittleDetail">Amount</p>
-                  <p className="confirmation__valueDetail">{"Rp " + dataTransfer.nominal}</p>
+                  <p className="confirmation__valueDetail">
+                    {dataTransfer.nominal.toLocaleString("en-US", {
+                      style: "currency",
+                      currency: "IDR",
+                    })}
+                  </p>
                 </div>
                 <div className="confirmation__detailCard mb-1">
                   <p className="confirmation__tittleDetail">Balance Left</p>
-                  <p className="confirmation__valueDetail">{"Rp " + dataTransfer.balance}</p>
+                  <p className="confirmation__valueDetail">
+                    {dataTransfer.balance.toLocaleString("en-US", {
+                      style: "currency",
+                      currency: "IDR",
+                    })}
+                  </p>
                 </div>
                 <div className="confirmation__detailCard mb-1">
                   <p className="confirmation__tittleDetail">Date and Time</p>

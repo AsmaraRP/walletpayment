@@ -58,11 +58,21 @@ export default function Status() {
 
                 <div className="status__detailCard mb-1">
                   <p className="status__tittleDetail">Amount</p>
-                  <p className="status__valueDetail">{"Rp " + dataTransfer.nominal}</p>
+                  <p className="status__valueDetail">
+                    {dataTransfer.nominal.toLocaleString("en-US", {
+                      style: "currency",
+                      currency: "IDR",
+                    })}
+                  </p>
                 </div>
                 <div className="status__detailCard mb-1">
                   <p className="status__tittleDetail">Balance Left</p>
-                  <p className="status__valueDetail">{"Rp " + (dataTransfer.balance - dataTransfer.nominal)}</p>
+                  <p className="status__valueDetail">
+                    {(dataTransfer.balance - dataTransfer.nominal).toLocaleString("en-US", {
+                      style: "currency",
+                      currency: "IDR",
+                    })}
+                  </p>
                 </div>
                 <div className="status__detailCard mb-1">
                   <p className="status__tittleDetail">Date and Time</p>
