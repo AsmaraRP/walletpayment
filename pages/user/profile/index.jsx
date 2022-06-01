@@ -8,8 +8,9 @@ import Topup from "../../../components/Topup";
 import { BsArrowRight, BsBoxArrowRight, BsPencil, BsTrash, BsUpload } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../stores/actions/auth";
+import axios from "../../../utils/axios";
 import Edit from "../../../components/Edit";
-import { deleteImage } from "../../../stores/actions/user";
+import { getUserById } from "../../../stores/actions/user";
 import Upload from "../../../components/upload";
 
 export default function Profile() {
@@ -37,8 +38,7 @@ export default function Profile() {
   const handleDeleteImage = async (e) => {
     try {
       e.preventDefault();
-      await dispatch(deleteImage(dataUser.id));
-      await dispatch(getUserById(dataUser.id));
+      await axios.delete(`/user/image/${dataUser.id}`);
       alert("SUCCESS DELETING IMAGE");
     } catch (error) {
       console.log(error);

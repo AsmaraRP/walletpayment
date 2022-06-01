@@ -16,7 +16,7 @@ export default function Confirmation() {
   const dispatch = useDispatch();
   const idUser = Cookies.get("id");
   const dataTransfer = Cookies.get("dataTransfer") ? JSON.parse(Cookies.get("dataTransfer")) : {};
-  const doTransfer = { receiverId: dataTransfer.id, amount: dataTransfer.nominal, notes: dataTransfer.note };
+  const doTransfer = { receiverId: dataTransfer.id, amount: dataTransfer.nominal, notes: dataTransfer.note ? dataTransfer.note : "" };
   const [showModal, setShowModal] = useState(false);
   const [showConfirm, setShowConfirm] = useState(true);
   const handleTransfer = async (e) => {

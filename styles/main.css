@@ -124,6 +124,41 @@
   text-align: right;
   color: #ff5b37;
 }
+.home__dashboardDes {
+  margin-left: 5%;
+  padding-top: 20px;
+}
+.home__dashboardArrowDown {
+  color: #1ec15f;
+}
+.home__dashboardArrowUp {
+  color: #ff5b37;
+}
+.home__dashboardTypeTransaction {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  color: #6a6a6a;
+}
+.home__dashboardAmount {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+  color: #3a3d42;
+}
+.home__dashboardChartTittle {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+  color: #3a3d42;
+  text-align: center;
+}
 /* Styling for History Page */
 .history__main {
   height: 750px;

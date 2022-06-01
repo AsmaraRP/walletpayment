@@ -15,8 +15,11 @@ import Topup from "../../../components/Topup";
 export async function getServerSideProps(context) {
   console.log("RENDER WITH SERVER IS RUNNING");
   const dataCookie = cookies(context);
+  const params = context.query;
+  const keySearch = params.search ? params.search : "";
+  // const page = !params?.page ? 1 : params.page;
   const result = await axios
-    .get("user?page=5&limit=4&search=&sort=firstName ASC", {
+    .get(`user?page=1&limit=4&search=${keySearch}&sort=firstName ASC`, {
       headers: {
         Authorization: `Baerer ${dataCookie.token}`,
       },
@@ -41,7 +44,8 @@ export default function Transfer(props) {
   const dataListUser = props.data.data;
   const [showModal, setShowModal] = useState(false);
   const [doTransfer, setDoTransfer] = useState(false);
-  const [dataTransfer, setDataTransfer] = useState({});
+  const [search, setSearch] = useState({});
+  const [dataTransfer, setDataTransfer] = useState("");
   const handleCard = async (item) => {
     try {
       setDataTransfer({ ...item });
@@ -50,8 +54,13 @@ export default function Transfer(props) {
       console.log(error);
     }
   };
+  const handleSearch = async (e) => {
+    if (e.key === "Enter") {
+      setSearch(e.target.value);
+    }
+    router.push(`/main/transfer?search=${search}`);
+  };
   const handleDataTransfer = (e) => {
-    e.preventDefault();
     e.preventDefault();
     setDataTransfer({ ...dataTransfer, balance: dataUser.balance, date: moment().format("MMMM Do YYYY, h:mm:ss a"), [e.target.name]: e.target.value });
   };
@@ -80,7 +89,7 @@ export default function Transfer(props) {
                       <BsSearch />
                     </div>
                     <div className="col-8">
-                      <input type="text" className="transfer__searchInput" placeholder="Search receiver here" />
+                      <input type="text" className="transfer__searchInput" placeholder="Search receiver here" name="search" onKeyPress={handleSearch} />
                     </div>
                   </div>
                 </div>

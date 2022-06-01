@@ -4,6 +4,8 @@ import Menu from "../../../components/Menu";
 import Navbar from "../../../components/Navbar";
 import Topup from "../../../components/Topup";
 import { useRouter } from "next/router";
+import { Line } from "react-chartjs-2";
+import chart from "chart.js/auto";
 import Image from "next/dist/client/image";
 import { BsArrowUp, BsPlusLg, BsArrowDown } from "react-icons/bs";
 import cookies from "next-cookies";
@@ -39,15 +41,26 @@ export default function Home(props) {
   const router = useRouter();
   const dispatch = useDispatch();
   const dataUser = useSelector((state) => state.user.data);
+  const [dataDashboard, setDataDashboard] = useState({});
+  const [dataIncome, setDataIncome] = useState([]);
+  const [dataExpense, setDataExpense] = useState([]);
+  const [isUpdate, setIsUpdate] = useState(false);
   useEffect(() => {
     getDataDashboard();
     Cookies.set("history", JSON.stringify(props.data.data));
   }, props.data.data);
+  useEffect(() => {
+    getDataDashboard();
+    Cookies.set("history", JSON.stringify(props.data.data));
+  }, isUpdate);
 
   const getDataDashboard = async () => {
     try {
-      const dataDashboard = await dispatch(dashboard(dataUser.id));
-      // console.log(dataDashboard.action.payload.data.data);
+      const resultDashboard = await dispatch(dashboard(dataUser.id));
+      setDataDashboard(resultDashboard.action.payload.data.data);
+      setDataIncome(dataDashboard.listIncome.map((item) => item.total));
+      setDataExpense(dataDashboard.listExpense.map((item) => item.total));
+      setIsUpdate(!isUpdate);
     } catch (error) {
       console.log(error);
     }
@@ -62,6 +75,62 @@ export default function Home(props) {
     e.preventDefault();
     router.push("/main/transfer");
   };
+
+  // CHART SETTING
+  console.log(dataIncome);
+  const incomeDefault = [1300000, 2000000, 200000, 0, 0, 0, 0];
+  const expenseDefault = [320000, 10001, 1570000, 0, 0, 0, 0];
+  const data = {
+    labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+    datasets: [
+      {
+        label: "Income",
+        fill: false,
+        backgroundColor: "#1EC15F",
+        borderColor: "#1EC15F",
+        data: dataIncome[3] ? dataIncome : incomeDefault,
+        // yAxisID: "y-axis-1",
+      },
+      {
+        label: "Expense",
+        fill: false,
+        backgroundColor: "#FF5B37",
+        borderColor: "#FF5B37",
+        data: dataExpense[3] ? dataExpense : expenseDefault,
+        // yAxisID: "y-axis-2",
+      },
+    ],
+  };
+
+  const options = {
+    responsive: true,
+    scales: {
+      yAxis: [
+        {
+          type: "linear",
+          display: true,
+          position: "left",
+          id: "y-axis-1",
+          ticks: {
+            beginAtZero: true,
+          },
+        },
+        {
+          type: "linear",
+          display: true,
+          position: "right",
+          id: "y-axis-2",
+          gridLines: {
+            drawOnArea: false,
+          },
+          ticks: {
+            beginAtZero: true,
+          },
+        },
+      ],
+    },
+  };
+
   return (
     <div>
       <Topup showModal={showModal} setShowModal={setShowModal} />
@@ -98,7 +167,27 @@ export default function Home(props) {
                 <div className="home__dashboard">
                   <div className="row">
                     <div className="col-6 home__chart">
-                      <h3>Grafik</h3>
+                      <div className="home__dashboardDes">
+                        <div className="row mb-4">
+                          <div className="col-6">
+                            <div className="home__dashboardArrowDown">
+                              <BsArrowDown size={30} />
+                            </div>
+                            <p className="home__dashboardTypeTransaction">Income</p>
+                            <p className="home__dashboardAmount">{dataDashboard.totalIncome ? "Rp " + dataDashboard.totalIncome : "Rp 0"}</p>
+                          </div>
+                          <div className="col-6">
+                            <div className="home__dashboardArrowUp">
+                              <BsArrowUp size={30} />
+                            </div>
+                            <p className="home__dasboardTypeTransaction">Expense</p>
+                            <p className="home__dashboardAmount">{dataDashboard.totalExpense ? "Rp " + dataDashboard.totalExpense : "Rp 0"}</p>
+                          </div>
+                        </div>
+                        <p className="home__dashboardChartTittle">Distribution Chart</p>
+
+                        <Line data={data} options={options} />
+                      </div>
                     </div>
                     <div className="col-5 home__transaction">
                       <div className="row">
