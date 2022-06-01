@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
+import axios from "../../utils/axios";
 import { BsGrid, BsArrowUp, BsPerson, BsPlusLg, BsBoxArrowRight } from "react-icons/bs";
 import { logout } from "../../stores/actions/auth";
 import { useDispatch } from "react-redux";
@@ -16,7 +17,8 @@ export default function Menu({ setShowModal }) {
   };
   const handleLogout = async () => {
     try {
-      await dispatch(logout());
+      await axios.post("/auth/logout");
+      Cookies.remove("token");
       router.push("/auth/login");
     } catch (error) {
       console.log(error);

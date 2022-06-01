@@ -23,7 +23,7 @@ export default function Confirmation() {
     try {
       e.preventDefault();
       const resultTransfer = await dispatch(transfer(doTransfer));
-      console.log(resultTransfer.action.payload.data.data);
+      Cookies.set("transferId", resultTransfer.action.payload.data.data.id);
       await dispatch(getUserById(idUser));
       router.push("/main/status");
     } catch (error) {

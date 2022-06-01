@@ -6,7 +6,7 @@ import Topup from "../../../components/Topup";
 import { useRouter } from "next/router";
 import { Line } from "react-chartjs-2";
 import chart from "chart.js/auto";
-import Image from "next/dist/client/image";
+import Image from "next/image";
 import { BsArrowUp, BsPlusLg, BsArrowDown } from "react-icons/bs";
 import cookies from "next-cookies";
 import Cookies from "js-cookie";
@@ -15,26 +15,26 @@ import axios from "../../../utils/axiosServer";
 import { dashboard } from "../../../stores/actions/transaction";
 
 export async function getServerSideProps(context) {
-  console.log("RENDER WITH SERVER IS RUNNING");
-  const dataCookie = cookies(context);
-  const result = await axios
-    .get("transaction/history?page=1&limit=4&filter=MONTH", {
+  try {
+    const dataCookie = cookies(context);
+    const result = await axios.get("transaction/history?page=1&limit=4&filter=MONTH", {
       headers: {
         Authorization: `Baerer ${dataCookie.token}`,
       },
-    })
-    .then((res) => {
-      return res;
-    })
-    .catch((err) => {
-      console.log(err);
-      return [];
     });
-  return {
-    props: {
-      data: result.data,
-    },
-  };
+    return {
+      props: {
+        data: result.data,
+      },
+    };
+  } catch (error) {
+    return {
+      redirect: {
+        destination: "/auth/login",
+        permanent: false,
+      },
+    };
+  }
 }
 
 export default function Home(props) {

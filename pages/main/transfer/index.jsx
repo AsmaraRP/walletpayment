@@ -13,29 +13,29 @@ import moment from "moment";
 import Topup from "../../../components/Topup";
 
 export async function getServerSideProps(context) {
-  console.log("RENDER WITH SERVER IS RUNNING");
-  const dataCookie = cookies(context);
-  const params = context.query;
-  const keySearch = params.search ? params.search : "";
-  // const page = !params?.page ? 1 : params.page;
-  const result = await axios
-    .get(`user?page=1&limit=4&search=${keySearch}&sort=firstName ASC`, {
+  try {
+    const dataCookie = cookies(context);
+    const params = context.query;
+    const keySearch = params.search ? params.search : "";
+    // const page = !params?.page ? 1 : params.page;
+    const result = await axios.get(`user?page=1&limit=4&search=${keySearch}&sort=firstName ASC`, {
       headers: {
         Authorization: `Baerer ${dataCookie.token}`,
       },
-    })
-    .then((res) => {
-      return res;
-    })
-    .catch((err) => {
-      console.log(err);
-      return [];
     });
-  return {
-    props: {
-      data: result.data,
-    },
-  };
+    return {
+      props: {
+        data: result.data,
+      },
+    };
+  } catch (error) {
+    return {
+      redirect: {
+        destination: "/auth/login",
+        permanent: false,
+      },
+    };
+  }
 }
 
 export default function Transfer(props) {
@@ -67,8 +67,12 @@ export default function Transfer(props) {
 
   const handleTransfer = (e) => {
     e.preventDefault();
-    Cookies.set("dataTransfer", JSON.stringify(dataTransfer));
-    router.push("/main/confirmation");
+    if (dataTransfer.nominal <= 1000) {
+      alert("Amout Must Be More Than 1000");
+    } else {
+      Cookies.set("dataTransfer", JSON.stringify(dataTransfer));
+      router.push("/main/confirmation");
+    }
   };
   return (
     <div>

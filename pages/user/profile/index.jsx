@@ -13,7 +13,32 @@ import Edit from "../../../components/Edit";
 import { getUserById } from "../../../stores/actions/user";
 import Upload from "../../../components/upload";
 
-export default function Profile() {
+export async function getServerSideProps(context) {
+  try {
+    const dataCookie = cookies(context);
+    const params = context.query;
+    const keySearch = params.search ? params.search : "";
+    const result = await axios.get(`user?page=1&limit=4&search=${keySearch}&sort=firstName ASC`, {
+      headers: {
+        Authorization: `Baerer ${dataCookie.token}`,
+      },
+    });
+    return {
+      props: {
+        data: result.data,
+      },
+    };
+  } catch (error) {
+    return {
+      redirect: {
+        destination: "/auth/login",
+        permanent: false,
+      },
+    };
+  }
+}
+
+export default function Profile(props) {
   const dispatch = useDispatch;
   const router = useRouter();
   const dataUser = useSelector((state) => state.user.data);
@@ -52,7 +77,8 @@ export default function Profile() {
 
   const handleLogout = async () => {
     try {
-      await dispatch(logout());
+      await axios.post("/auth/logout");
+      Cookies.remove("token");
       router.push("/auth/login");
     } catch (error) {
       console.log(error);

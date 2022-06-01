@@ -159,6 +159,7 @@
   color: #3a3d42;
   text-align: center;
 }
+
 /* Styling for History Page */
 .history__main {
   height: 750px;
@@ -320,6 +321,14 @@
   line-height: 25px;
   text-align: center;
   color: #ffffff;
+}
+.history__pagination {
+  padding-top: 5%;
+  padding-left: 30%;
+}
+.history__buttonPagination {
+  border: none;
+  background-color: #6379f4;
 }
 /* Styling for Confirmation Page */
 .confirmation__main {

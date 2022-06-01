@@ -5,33 +5,66 @@ import Navbar from "../../../components/Navbar";
 import Topup from "../../../components/Topup";
 import cookies from "next-cookies";
 import axios from "../../../utils/axiosServer";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import { BiArrowFromLeft, BiArrowFromRight } from "react-icons/bi";
 
 export async function getServerSideProps(context) {
-  console.log("RENDER WITH SERVER IS RUNNING");
-  const dataCookie = cookies(context);
-  const result = await axios
-    .get("transaction/history?page=1&limit=6&filter=MONTH", {
+  try {
+    const dataCookie = cookies(context);
+    const params = context.query;
+    const keyFilter = params.filter ? params.filter : " ";
+    const keyPage = !params.page ? 1 : params.page <= 1 ? 1 : params.page;
+    const result = await axios.get(`transaction/history?page=${keyPage}&limit=5&filter=${keyFilter}`, {
       headers: {
         Authorization: `Baerer ${dataCookie.token}`,
       },
-    })
-    .then((res) => {
-      return res;
-    })
-    .catch((err) => {
-      console.log(err);
-      return [];
     });
-  return {
-    props: {
-      data: result.data,
-    },
-  };
+    return {
+      props: {
+        data: result.data ? result.data : {},
+      },
+    };
+  } catch (error) {
+    return {
+      redirect: {
+        destination: "/auth/login",
+        permanent: false,
+      },
+    };
+  }
 }
 
 export default function History(props) {
   console.log(props.data.data);
+  const router = useRouter();
+  const [filter, setFilter] = useState({});
+  const [page, setPage] = useState(1);
   const [showModal, setShowModal] = useState(false);
+
+  const handleFilter = async (e) => {
+    setFilter(e.target.value);
+    console.log(filter);
+    router.push(`/main/history?page=${page}&filter=${filter}`);
+  };
+  const handlePageUp = (e) => {
+    e.preventDefault();
+    setPage(page + 1);
+    if (page < 1) {
+      setPage(1);
+    }
+    router.push(`/main/history?page=${page}&filter=`);
+  };
+
+  const handlePageDown = (e) => {
+    e.preventDefault();
+    setPage(page - 1);
+    if (page < 1) {
+      setPage(1);
+    }
+    router.push(`/main/history?page=${page}&filter=`);
+  };
+
   return (
     <div>
       <Topup showModal={showModal} setShowModal={setShowModal} />
@@ -49,28 +82,48 @@ export default function History(props) {
                     <h1 className="history__transactionTittle">Transaction History</h1>
                   </div>
                   <div className="col-4">
-                    <select className="history__filter" defaultValue="">
-                      <option selected>---Select Filter---</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
+                    <select className="history__filter" defaultValue="" onClick={handleFilter}>
+                      <option selected value="">
+                        ---Select Filter---
+                      </option>
+                      <option value="WEEK">WEEKLY</option>
+                      <option value="MONTH">MONTHLY</option>
+                      <option value="YEAR">ANUAL</option>
                     </select>
                   </div>
                 </div>
-                {props.data.data.map((item) => (
-                  <div className="home__cardHistory" key={item.id}>
-                    <div className="row">
-                      <div className="col-2">Img</div>
-                      <div className="col-4">
-                        <p className="home__historyName">{item.firstName + " " + item.lastName}</p>
-                        <p className="home__historyStatus">{item.type === "send" ? "Transfer" : item.type === "topup" ? "topup" : "Accepted"}</p>
+                {!props.data.data
+                  ? null
+                  : props.data.data.map((item) => (
+                      <div className="home__cardHistory" key={item.id}>
+                        <div className="row">
+                          <div className="col-2">
+                            <Image src={item.image ? process.env.URL_CLOUDINARY + item.image : "/photoProfile.jpg"} alt="photoProfile" width={70} height={70} className="home__Historyimage" />
+                          </div>
+                          <div className="col-4">
+                            <p className="home__historyName">{item.firstName + " " + item.lastName}</p>
+                            <p className="home__historyStatus">{item.type === "send" ? "Transfer" : item.type === "topup" ? "topup" : "Accepted"}</p>
+                          </div>
+                          <div className="col-5">
+                            <p className={item.type === "send" ? "home__historyOut" : "home__historyIn"}>{item.type === "send" ? "- " + item.amount : "+ " + item.amount}</p>
+                          </div>
+                        </div>
                       </div>
-                      <div className="col-5">
-                        <p className={item.type === "send" ? "home__historyOut" : "home__historyIn"}>{item.type === "send" ? "- " + item.amount : "+ " + item.amount}</p>
-                      </div>
+                    ))}
+                <div className="history__pagination">
+                  <div className="row">
+                    <div className="col-3">
+                      <button className="history__buttonPagination" onClick={handlePageDown}>
+                        <BiArrowFromRight />
+                      </button>
+                    </div>
+                    <div className="col-3">
+                      <button className="history__buttonPagination" onClick={handlePageUp}>
+                        <BiArrowFromLeft />
+                      </button>
                     </div>
                   </div>
-                ))}
+                </div>
               </div>
             </div>
           </div>

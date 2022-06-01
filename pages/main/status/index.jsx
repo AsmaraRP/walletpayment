@@ -7,17 +7,24 @@ import { BsDownload } from "react-icons/bs";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import Cookies from "js-cookie";
+import axios from "../../../utils/axios";
 import Topup from "../../../components/Topup";
 
 export default function Status() {
   const router = useRouter();
   const dataUser = useSelector((state) => state.user.data);
   const dataTransfer = Cookies.get("dataTransfer") ? JSON.parse(Cookies.get("dataTransfer")) : {};
+  const docTransfer = Cookies.get("transferId") ? Cookies.get("transferId") : "";
   const [statusTransfer, setStatusTransfer] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const handleTryagain = (e) => {
     e.preventDefault();
     setStatusTransfer(!statusTransfer);
+  };
+  const handleDownload = async (e) => {
+    e.preventDefault();
+    const result = await axios.get(`/export/transaction/${docTransfer}`);
+    window.open(result.data.data.url);
   };
   const handleHome = (e) => {
     e.preventDefault();
@@ -79,7 +86,7 @@ export default function Status() {
                 </div>
                 {statusTransfer ? (
                   <div className="status__ok">
-                    <button className="status__downloadButton" onClick={handleTryagain}>
+                    <button className="status__downloadButton" onClick={handleDownload}>
                       <BsDownload /> Download PDF
                     </button>
                     <button className="status__button" onClick={handleHome}>
