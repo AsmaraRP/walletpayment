@@ -1,4 +1,4 @@
-<h1 align="center">FazzPay - Wallet & Payment - FRONT END</h1>
+<h1 align="center">FazzPay/Zwallet - Wallet & Payment - FRONT END</h1>
 
 ## Contents
 - [Description]
@@ -13,7 +13,7 @@
 
 ## Description
 
-FAZZPAY is a e-wallet and payment tools for making easy every transaction and share digital money. In this project, we made the simple platform that's used to transcation likes top-up digital money, transfer each other, and  historical flow balance.
+FAZZPAY/ZWallet is a e-wallet and payment tools for making easy every transaction and share digital money. In this project, we made the simple platform that's used to transcation likes top-up digital money, transfer each other, and  historical flow balance.
 
 ## How It Works ?
 
