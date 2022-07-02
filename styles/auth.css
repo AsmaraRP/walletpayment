@@ -474,6 +474,9 @@
   .signin__info {
     display: none;
   }
+  .signin__main {
+    width: 450px;
+  }
   .signin__description {
     display: none;
   }
@@ -510,6 +513,9 @@
     height: 1000px;
     width: 500px;
   }
+  .login__main {
+    width: 450px;
+  }
   .login__formMenu {
     width: 410px;
   }
@@ -526,7 +532,71 @@
   .login__icon {
     display: none;
   }
-  .login__login {
+  .resetpass__menu {
+    background-color: white;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+  }
+  .resetpass__info {
+    width: 300px;
+  }
+  .resetpass__description {
+    width: 300px;
+  }
+  .resetpass__content {
+    height: 1000px;
+    width: 500px;
+  }
+  .resetpass__formMenu {
+    width: 410px;
+  }
+  .resetpass__mobileTittle {
+    display: flex;
+    font-family: "Nunito Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 33px;
+    color: #3a3d42;
+    text-align: center;
+  }
+  .resetpass__icon {
+    display: none;
+  }
+  .resetpass__resetpass {
+    width: 80%;
+  }
+  .createpin__menu {
+    background-color: white;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+  }
+  .createpin__info {
+    width: 300px;
+  }
+  .createpin__description {
+    width: 300px;
+  }
+  .createpin__content {
+    height: 1000px;
+    width: 500px;
+  }
+  .createpin__formMenu {
+    width: 350px;
+    padding-right: 20px;
+  }
+  .createpin__mobileTittle {
+    display: flex;
+    font-family: "Nunito Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 33px;
+    color: #3a3d42;
+    text-align: center;
+  }
+  .createpin__icon {
+    display: none;
+  }
+  .createpin__createpin {
     width: 80%;
   }
 }

@@ -408,6 +408,33 @@
     display: none;
   }
   .navbar__main {
+    /* display: none; */
+    padding-left: 50px;
+    width: 450px;
+  }
+  .navbar__profile {
     display: none;
+  }
+  .edit__main {
+    padding-left: 0;
+  }
+  .edit__card {
+    width: 430px;
+  }
+  .confirmpin__main {
+    padding-left: 0;
+  }
+  .confirmpin__card {
+    width: 430px;
+  }
+  .topup__main {
+    padding-left: 0;
+  }
+  .topup__card {
+    width: 430px;
+  }
+  .navbar__bellCard {
+    left: 10%;
+    width: 300px;
   }
 }

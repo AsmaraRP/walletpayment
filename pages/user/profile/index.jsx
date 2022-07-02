@@ -14,7 +14,7 @@ import { getUserById } from "../../../stores/actions/user";
 import Upload from "../../../components/upload";
 
 export default function Profile() {
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
   const router = useRouter();
   const dataUser = useSelector((state) => state.user.data);
   console.log(dataUser.id);
@@ -24,7 +24,6 @@ export default function Profile() {
   const getDataByUserId = async () => {
     try {
       await dispatch(getUserById(dataUser.id));
-      s;
     } catch (error) {
       console.log(error);
     }

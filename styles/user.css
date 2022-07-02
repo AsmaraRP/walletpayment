@@ -426,7 +426,7 @@ input:focus {
     padding-top: 10px;
     padding-left: 10px;
     left: -100px;
-    width: 400px;
+    width: 380px;
   }
   .information__transactionTittle {
     position: relative;
@@ -439,5 +439,43 @@ input:focus {
   .information__button {
     position: relative;
     left: -50px;
+  }
+  .phone__content {
+    width: 400px;
+    position: relative;
+    left: -100px;
+  }
+  .password__transactionTittle {
+    margin-left: 10px;
+  }
+  .password__detail {
+    margin-left: 10px;
+  }
+  .password__content {
+    height: 800px;
+    position: relative;
+    padding: 0px;
+    padding-top: 10px;
+    padding-left: 10px;
+    left: -100px;
+    width: 380px;
+  }
+  .password__icon {
+    display: none;
+  }
+  .pin__content {
+    height: 800px;
+    position: relative;
+    padding: 0px;
+    padding-top: 10px;
+    padding-left: 10px;
+    left: -100px;
+    width: 380px;
+  }
+  .pin__transactionTittle {
+    margin-left: 10px;
+  }
+  .pin__detail {
+    margin-left: 10px;
   }
 }

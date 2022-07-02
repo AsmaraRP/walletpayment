@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import { Line } from "react-chartjs-2";
 import chart from "chart.js/auto";
 import Image from "next/image";
-import { BsArrowUp, BsPlusLg, BsArrowDown } from "react-icons/bs";
+import { BsArrowUp, BsPlusLg, BsArrowDown, BsFillPersonFill } from "react-icons/bs";
 import cookies from "next-cookies";
 import Cookies from "js-cookie";
 import { useSelector, useDispatch } from "react-redux";
@@ -75,6 +75,10 @@ export default function Home(props) {
     e.preventDefault();
     router.push("/main/transfer");
   };
+  const handleProfile = (e) => {
+    e.preventDefault();
+    router.push("/user/profile");
+  };
 
   // CHART SETTING
   // const incomeDefault = [1300000, 2000000, 200000, 0, 0, 0, 0];
@@ -133,7 +137,7 @@ export default function Home(props) {
   };
 
   return (
-    <div>
+    <div className="home__resp">
       <Topup showModal={showModal} setShowModal={setShowModal} />
       <Navbar />
       <div className="home__main">
@@ -143,7 +147,7 @@ export default function Home(props) {
               <div className="col-3">
                 <Menu setShowModal={setShowModal} />
               </div>
-              <div className="col-8">
+              <div className="col-8 home__lay">
                 <div className="home__balance">
                   <div className="row">
                     <div className="col-8">
@@ -156,7 +160,7 @@ export default function Home(props) {
                       </p>
                       <p className="home__balancePhone">{dataUser.noTelp}</p>
                     </div>
-                    <div className="col-4">
+                    <div className="col-4 home__displayButton">
                       <div className="home__balanceButton">
                         <button className="home__balanceButtonSet" onClick={handleTransfer}>
                           <BsArrowUp /> Transfer
@@ -167,11 +171,16 @@ export default function Home(props) {
                           <BsPlusLg /> Top Up
                         </button>
                       </div>
+                      <div className="home__balanceButton home__toProfile">
+                        <button className="home__balanceButtonSet" onClick={handleProfile}>
+                          <BsFillPersonFill /> profile
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div className="home__dashboard">
-                  <div className="row">
+                  <div className="row home__lay2">
                     <div className="col-6 home__chart">
                       <div className="home__dashboardDes">
                         <div className="row mb-4">
@@ -207,8 +216,9 @@ export default function Home(props) {
                         <button className="home__dashboardChartTittle" onClick={() => getDataDashboard()}>
                           Refresh Chart
                         </button>
-
-                        <Line data={data} options={options} />
+                        <div className="home__graph">
+                          <Line data={data} options={options} />
+                        </div>
                       </div>
                     </div>
                     <div className="col-5 home__transaction">

@@ -545,31 +545,126 @@
   text-align: center;
   color: #6379f4;
 }
+.home__toProfile {
+  display: none;
+}
 @media screen and (max-width: 800px) {
-  .home__balance {
-    width: 450px;
-    position: relative;
-    left: -50px;
+  .home__main {
+    width: 400px;
+    /* height: 500px; */
   }
-  .home__balanceButtonSet {
-    position: relative;
-    background-color: #b5bdcc;
-    top: 150px;
-    left: -280px;
-    width: 200px;
-  }
-  .home__dashboard {
+  .home__content {
     width: 400px;
   }
-  .home__transaction {
-    width: 900px;
-    position: relative;
-    top: 650px;
-    left: -280px;
+  .home__balance {
+    padding-left: 30px;
+    text-align: center;
   }
+  .home__balanceTittle {
+    font-size: 14px;
+  }
+  .home__balanceNominal {
+    font-size: 20px;
+  }
+  .home__displayButton {
+    display: flex;
+    position: absolute;
+    top: 350px;
+    left: -20px;
+  }
+  .home__toProfile {
+    display: flex;
+  }
+  .home__balanceButton {
+    flex: 1;
+  }
+  .home__balanceButtonSet {
+    color: #4927f2;
+    width: 150px;
+  }
+  .home__lay {
+    display: flex;
+    flex-direction: column;
+  }
+  .home__balance {
+    flex: 1;
+  }
+  .home__dashboard {
+    flex: 1;
+    width: 300px;
+    /* display: none; */
+  }
+  /* .home__lay2 {
+    width: 100%;
+  } */
   .home__chart {
+    width: 600px;
+    margin-top: 50px;
+    margin-right: 0;
+    position: absolute;
+    top: 400px;
+    height: 10px;
+    /* left: -100px; */
+  }
+  .home__dashboardDes {
+    margin-left: 0;
+  }
+  .home__graph {
+    display: none;
+  }
+  .home__dashboardChartTittle {
+    display: none;
+  }
+  .home__transaction {
+    width: 400px;
+    position: absolute;
+    top: 600px;
+    height: 100px;
+    /* left: -100px; */
+  }
+  .home__cardHistory {
+    display: none;
+  }
+  .history__content {
+    height: 800px;
     position: relative;
-    top: 150px;
-    left: -50px;
+    padding: 0px;
+    padding-top: 10px;
+    padding-left: 10px;
+    left: -100px;
+    width: 380px;
+  }
+  .history__filter {
+    display: none;
+  }
+  .transfer__content {
+    height: 800px;
+    position: relative;
+    padding: 0px;
+    padding-top: 10px;
+    padding-left: 10px;
+    left: -100px;
+    width: 400px;
+  }
+  .transfer__nominal {
+    width: 200px;
+  }
+  .confirmation__content {
+    height: 800px;
+    position: relative;
+    padding: 0px;
+    padding-top: 10px;
+    padding-left: 10px;
+    left: -100px;
+    width: 400px;
+  }
+  .status__content {
+    height: 900px;
+    position: relative;
+    padding: 0px;
+    padding-top: 10px;
+    padding-left: 10px;
+    left: -100px;
+    width: 400px;
   }
 }
