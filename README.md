@@ -40,3 +40,6 @@ We will show some page for example that represent how our front end project look
 ![e4](https://user-images.githubusercontent.com/95269946/171458727-260d98e5-a6af-4832-93e2-09e1faafbf49.png)
 ### Profile Page
 ![e5](https://user-images.githubusercontent.com/95269946/171458752-cd0f365b-7d8b-4b16-b2af-21c9f8e46bf7.png)
+
+### Deploy
+link  : https://fazzpay-rifang.netlify.app/
